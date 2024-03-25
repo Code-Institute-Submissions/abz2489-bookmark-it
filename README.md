@@ -81,3 +81,68 @@ User profiles on Bookmark-It include a dedicated section that provides insights 
 |     | **Book Ratings / reviews**           |                                                              |                                                                                       |                         |
 | 28  | account holder                   | rate books that I have read  / bought                        | help others choose the best books to buy                                              | Build<br>Test<br>Done   |
 | 29  | account holder                   | view reviews written by other users                          | make decisions on my own purchases                                                    | Build<br>Test<br>Done   |
+
+
+## Skeleton
+### Wireframes
+
+### Books
+**Mobile**
+
+<img src="documentation/wireframes/bmi-books-m.png" height="400" width="300"/>
+
+**Tablet**
+
+<img src="documentation/wireframes/bmi-books-t.png" height="350" width="350"/>
+
+**Desktop**
+
+<img src="documentation/wireframes/bmi-books-d.png" height="350" width="400"/>
+
+### Book Summary
+**Mobile**
+
+<img src="documentation/wireframes/bmi-book-summary-m.png" height="400" width="250"/>
+
+**Tablet**
+
+<img src="documentation/wireframes/bmi-book-summary-t.png" height="350" width="350"/>
+
+**Desktop**
+
+<img src="documentation/wireframes/bmi-book-summary-d.png" height="350" width="400"/>
+
+### Register
+**Mobile**
+**Tablet**
+**Desktop**
+
+### Login
+**Mobile**
+**Tablet**
+**Desktop**
+
+### Profile
+**Mobile**
+**Tablet**
+**Desktop**
+
+### Basket
+**Mobile**
+**Tablet**
+**Desktop**
+
+### Checkout
+**Mobile**
+**Tablet**
+**Desktop**
+
+### Checkout Success
+**Mobile**
+**Tablet**
+**Desktop**
+
+### Book Admin
+**Mobile**
+**Tablet**
+**Desktop**
