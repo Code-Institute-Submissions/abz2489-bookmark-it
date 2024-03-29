@@ -146,3 +146,37 @@ User profiles on Bookmark-It include a dedicated section that provides insights 
 **Mobile**
 **Tablet**
 **Desktop**
+
+## Surface
+
+# Features
+
+# Technologies Used
+
+## Languages
+## Frameworks
+## Database
+## Libraries & Packages
+## Payment System
+## Programs
+
+# Testing
+
+# Deployment
+
+# Future Features
+
+# Known Bugs
+
+# Citation
+
+## Code
+- Laura Mayock's codu article on Meta Tags.
+[Meta Tags - All your work could be for nothing!](https://www.codu.co/articles/meta-tags-all-your-work-could-be-for-nothing-32p5y-ej)
+
+- Niall Maher's codu article on CSS Reset.
+[A Simple and Minimal CSS Reset](https://www.codu.co/articles/a-simple-and-minimal-css-reset-xc7ypizf)
+
+## Images
+
+## Text
