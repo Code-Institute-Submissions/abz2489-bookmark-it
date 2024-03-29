@@ -1,0 +1,57 @@
+<div class="collapse navbar-collapse w-100" id="navbarTogglerDemo01">
+    <ul class="navbar-nav" id="nav-items">
+        {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
+                <li class="nav-item dropdown me-3">
+                    <a href="" class="nav-link-lg dropdown-toggle" role="button" 
+                    data-bs-toggle="dropdown" aria-expanded="false">Book Admin</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Add Book</a></li>
+                        <li><a class="dropdown-item" href="">Edit Book</a></li>
+                        <li><a class="dropdown-item" href="">Delete Book</a></li>
+                    </ul>
+                </li>
+            {% endif %}
+            <li class="nav-item me-3">
+                <a href="#" class="nav-link-lg">My Profile</a>
+            </li>
+            <li class="nav-item me-3">
+                <a href="{% url 'account_logout' %}" class="nav-link-lg">Logout</a>
+            </li>
+        {% else %}
+            <li class="nav-item me-3">
+                <a class="nav-link-lg" href="{% url 'account_signup' %}">Register</a>
+            </li>
+            <li class="nav-item me-3">
+                <a class="nav-link-lg" href="{% url 'account_login' %}">Login</a>
+            </li>
+        {% endif %}
+        <li class="nav-item me-3">
+            <a class="nav-link-lg" href="{% url 'books' %}">Books</a>
+        </li>
+
+        <!--CATEGORIES DROPDOWN-->
+        <li class="nav-item dropdown me-5">
+            <a class="nav-link-lg dropdown-toggle" role="button" 
+            data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="">Non-Fiction</a></li>
+                <li><a class="dropdown-item" href="">Fiction</a></li>
+                <li><a class="dropdown-item" href="">Young Adult</a></li>
+                <li><a class="dropdown-item" href="">Children</a></li>
+                <li><a class="dropdown-item" href="">Education</a></li>
+            </ul>
+        </li>
+        <!--BOOKMARK & BASKET-->
+        <li class="nav-item me-3">
+            <a class="nav-link-lg" href="#">
+                <i class="bi bi-bookmark-fill"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link-lg" href="#">
+                <i class="bi bi-basket3-fill"></i>
+            </a>
+        </li>
+    </ul>
+</div>
