@@ -82,6 +82,9 @@ User profiles on Bookmark-It include a dedicated section that provides insights 
 | 28  | account holder                   | rate books that I have read  / bought                        | help others choose the best books to buy                                              | Build<br>Test<br>Done   |
 | 29  | account holder                   | view reviews written by other users                          | make decisions on my own purchases                                                    | Build<br>Test<br>Done   |
 
+### Database
+![Bookmark-It Relational Database](documentation/features/bmi-db.png)
+
 
 ## Skeleton
 ### Wireframes
