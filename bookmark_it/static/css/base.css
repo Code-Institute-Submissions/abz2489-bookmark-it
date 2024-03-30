@@ -1,4 +1,4 @@
-/*CSS Rebase sourced from Codu article documented in README.md*/
+/*CSS REBASE sourced from Codu article documented in README.md*/
 *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -34,3 +34,8 @@ input, button, textarea, select {
     font: inherit;
   }
 
+/*GLOBAL STYLES*/
+hr {
+  width: 75%;
+  margin: auto;
+}
