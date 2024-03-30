@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block content %}
+    <div class="overlay">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h1>{{ book.title }} Summary</h1>
+            </div>
+        </div>
+        <hr class="mt-1 mb-3">
+
+        <!--BOOK COVERS-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-5 col-lg-3 offset-lg-2">
+                    <div class="image-container my-5">
+                        {% if book.cover %}
+                            <a href="{{ MEDIA_URL }}{{ book.cover.url }}" target="_blank">
+                                <img class="cover-img-med img-fluid" src="{{ MEDIA_URL }}{{ book.cover.url }}" alt="{{ book.title }}">
+                            </a>
+                            {% else %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ book.title }}">
+                                </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!--BOOK SUMMARY-->
+
+        </div>
+    </div>
+{% endblock %}
