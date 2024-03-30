@@ -1,7 +1,13 @@
 from django.shortcuts import render
+from .models import Book
 
-# Create your views here.
 
 def all_books(request):
-    """A view to return the books page"""
-    return render(request, 'books/books.html')
+    """A view to return the books, sorting & search queries"""
+
+    books = Book.objects.all()
+
+    context = {
+        'books': books,
+    }
+    return render(request, 'books/books.html', context)
