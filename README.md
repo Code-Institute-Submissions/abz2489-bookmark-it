@@ -113,17 +113,33 @@ User profiles on Bookmark-It include a dedicated section that provides insights 
 
 **Desktop**
 
-<img src="documentation/wireframes/bmi-book-summary-d.png" height="350" width="400"/>
+<img src="documentation/wireframes/bmi-book-summary-d.png" height="350" width="500"/>
 
 ### Register
 **Mobile**
+
+<img src="documentation/wireframes/bmi-register-m.png" height="400" width="300"/>
+
 **Tablet**
+
+<img src="documentation/wireframes/bmi-register-t.png" height="350" width="350"/>
+
 **Desktop**
+
+<img src="documentation/wireframes/bmi-register-d.png" height="350" width="500"/>
 
 ### Login
 **Mobile**
+
+<img src="documentation/wireframes/bmi-login-m.png" height="400" width="300"/>
+
 **Tablet**
+
+<img src="documentation/wireframes/bmi-login-t.png" height="350" width="350"/>
+
 **Desktop**
+
+<img src="documentation/wireframes/bmi-login-d.png" height="350" width="500"/>
 
 ### Profile
 **Mobile**
