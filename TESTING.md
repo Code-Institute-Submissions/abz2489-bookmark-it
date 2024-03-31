@@ -16,7 +16,13 @@
 - Apply migrations ```python3 manage.py migrate```
 - Create new super user ```python3 manage.py createsuperuser```
 
-3. The all_books view isn't rendering as a "Home Page" when running the server. Fixed by emptying the path in the project level URLs ```path('books/', include('books.urls'))``` > ```path('', include('books.urls'))```
+3. The all_books view isn't rendering as a "Home Page" when running the server. Fixed by emptying the path in the project level URLs ```path('books/', include('books.urls'))``` to ```path('', include('books.urls'))```
 
 <img src="documentation/bugs/bmi-bug3.png" width="500"/>
 <img src="documentation/bugs/bmi-fix3.png" width="350"/>
+
+4. Mobile book search not showing results. Fixed by comparing the mobile search section with the search section in base.html. The name attribute was missing from mobile. 
+The first image shows 15 results when the word "children" was searched, this should show 6 as there are only 6 books in the children's category.
+
+<img src="documentation/bugs/bmi-bug4.png" height="350"/>
+<img src="documentation/bugs/bmi-fix4.png" height="350"/>
