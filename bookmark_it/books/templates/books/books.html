@@ -31,7 +31,7 @@
                 </select>
             </div>
             <div class="col-4">
-                <p class="text-end mb-4 me-4">{{ books|length }} Books</p>
+                <p class="text-end mb-4 me-4">{{ books|length }} Books{% if search_term %} found for "{{ search_term }}"{% endif %}</p>
             </div>
         </div>
     </div>
