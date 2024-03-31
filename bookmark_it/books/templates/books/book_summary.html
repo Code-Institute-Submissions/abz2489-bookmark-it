@@ -40,7 +40,7 @@
                     <p class="book-title mb-0">{{ book.title }}</p>
                     <p class="book-author mb-2">{{ book.author }}</p>
                     <p class="book-price mb-3 text-left">£{{ book.price }}</p>
-                    <form class="form" method="POST" action="{% url 'add_to_basket' book.id %}">
+                    <form class="form" method="POST" action="">
                         {% csrf_token %}
                         <p class=""><strong>Quantity:</strong></p>
                         <div class="form-group">
