@@ -12,3 +12,19 @@ function optionUrl(option) {
         }
         return false;
     }
+
+    function fillSquare(icon) {
+        let arrowUp = document.getElementById("arrow-up");
+        arrowUp.classList.remove("bi-arrow-up-square");
+        arrowUp.classList.add("bi-arrow-up-square-fill");
+    }
+
+    function emptySquare(icon) {
+        let arrowUp = document.getElementById("arrow-up");
+        arrowUp.classList.remove("bi-arrow-up-square-fill");
+        arrowUp.classList.add("bi-arrow-up-square");
+    }
+
+    function scrollToTop() {
+        window.scrollTo(0,0);
+    }
