@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
-from .models import Book
+from .models import Category, Book
 
 
 def all_books(request):
@@ -9,9 +9,15 @@ def all_books(request):
 
     books = Book.objects.all()
     query = None
+    categories = None
 
-    """Search"""
+    """Search & sort"""
     if request.GET:
+        if "category" in request.GET:
+            categories = request.GET['category'].split(",")
+            books = books.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
+
         if "q" in request.GET:
             query = request.GET["q"]
             print(f"Query: {query}")
@@ -25,6 +31,7 @@ def all_books(request):
     context = {
         'books': books,
         'search_term': query,
+        "current_categories": categories,
     }
     return render(request, 'books/books.html', context)
 
