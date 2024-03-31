@@ -20,10 +20,14 @@
                 <h5 class="ms-4 mb-1">Sort:</h5>
                 <select onchange="optionUrl(this)" class="form-select w-50 ms-4 mb-4" aria-label="Default select example">
                     <option selected>Select</option>
-                    <option value="1" data-url="{% url 'books' %}?sort=title&direction=asc">Title</option>
-                    <option value="2" data-url="{% url 'books' %}?sort=author&direction=asc">Author</option>
-                    <option value="3" data-url="{% url 'books' %}?sort=price&direction=asc">Price(Low to High)</option>
-                    <option value="4" data-url="{% url 'books' %}?sort=price&direction=desc">Price(High to Low)</a></option>
+                    <option value="1" data-url="{% url 'books' %}?sort=title&direction=asc"
+                    {% if current_sorting == "title_asc" %}selected{% endif %}>Title</option>
+                    <option value="2" data-url="{% url 'books' %}?sort=author&direction=asc"
+                    {% if current_sorting == "author_asc" %}selected{% endif %}>Author</option>
+                    <option value="3" data-url="{% url 'books' %}?sort=price&direction=asc" 
+                    {% if current_sorting == "price_asc" %}selected{% endif %}>Price (Low to High)</option>
+                    <option value="4" data-url="{% url 'books' %}?sort=price&direction=desc"
+                    {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (High to Low)</a></option>
                 </select>
             </div>
             <div class="col-4">
