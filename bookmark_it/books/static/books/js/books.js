@@ -10,42 +10,42 @@ function optionUrl(option) {
             window.location.href = url;
         }
         return false;
-    }
+}
 
-    /*Functions to switch the bootstrap arrow icon depending on hover state*/
-    function fillSquare(icon) {
-        let arrowUp = document.getElementById("arrow-up");
+/*Functions to switch the bootstrap arrow icon depending on hover state*/
+function fillSquare(icon) {
+    let arrowUp = document.getElementById("arrow-up");
+    arrowUp.classList.remove("bi-arrow-up-square");
+    arrowUp.classList.add("bi-arrow-up-square-fill");
+}
+
+function emptySquare(icon) {
+    let arrowUp = document.getElementById("arrow-up");
+    arrowUp.classList.remove("bi-arrow-up-square-fill");
+    arrowUp.classList.add("bi-arrow-up-square");
+}
+
+/*Click event that takes the user back to the top of the page*/
+function scrollToTop() {
+    window.scrollTo(0,0);
+}
+
+/*Media query match event to determine mobile style of back to top button*/
+function mobileFill(mQuery) {
+    let arrowUp = document.getElementById("arrow-up");
+    if (mQuery.matches) {
         arrowUp.classList.remove("bi-arrow-up-square");
         arrowUp.classList.add("bi-arrow-up-square-fill");
-    }
-
-    function emptySquare(icon) {
-        let arrowUp = document.getElementById("arrow-up");
+    } else {
         arrowUp.classList.remove("bi-arrow-up-square-fill");
         arrowUp.classList.add("bi-arrow-up-square");
     }
+}
 
-    /*Click event that takes the user back to the top of the page*/
-    function scrollToTop() {
-        window.scrollTo(0,0);
-    }
+let mQuery = window.matchMedia("(max-width: 767px)");
 
-    /*Media query match event to determine mobile style of back to top button*/
-    function mobileFill(mQuery) {
-        let arrowUp = document.getElementById("arrow-up");
-        if (mQuery.matches) {
-            arrowUp.classList.remove("bi-arrow-up-square");
-            arrowUp.classList.add("bi-arrow-up-square-fill");
-        } else {
-            arrowUp.classList.remove("bi-arrow-up-square-fill");
-            arrowUp.classList.add("bi-arrow-up-square");
-        }
-    }
+mobileFill(mQuery);
 
-    let mQuery = window.matchMedia("(max-width: 767px)")
-
-    mobileFill(mQuery)
-
-    mQuery.onchange = function() {
-        mobileFill(mQuery);
-      }
+mQuery.onchange = function() {
+    mobileFill(mQuery);
+};
