@@ -141,15 +141,18 @@ User profiles on Bookmark-It include a dedicated section that provides insights 
 
 <img src="documentation/wireframes/bmi-login-d.png" height="350" width="500"/>
 
-### Profile
-**Mobile**
-**Tablet**
-**Desktop**
-
 ### Basket
 **Mobile**
+
+<img src="documentation/wireframes/bmi-basket-m.png" height="400" width="300"/>
+
 **Tablet**
+
+<img src="documentation/wireframes/bmi-basket-t.png" height="350" width="350"/>
+
 **Desktop**
+
+<img src="documentation/wireframes/bmi-basket-d.png" height="350" width="500"/>
 
 ### Checkout
 **Mobile**
@@ -157,6 +160,11 @@ User profiles on Bookmark-It include a dedicated section that provides insights 
 **Desktop**
 
 ### Checkout Success
+**Mobile**
+**Tablet**
+**Desktop**
+
+### Profile
 **Mobile**
 **Tablet**
 **Desktop**
