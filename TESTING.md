@@ -26,3 +26,8 @@ The first image shows 15 results when the word "children" was searched, this sho
 
 <img src="documentation/bugs/bmi-bug4.png" height="350"/>
 <img src="documentation/bugs/bmi-fix4.png" height="350"/>
+
+5. Back to top button being pushed up to middle of page after moving the overlay closing tag. Fixed by moving the back to top button inside the overlay tags.
+
+<img src="documentation/bugs/bmi-bug5.png" height="350"/>
+<img src="documentation/bugs/bmi-fix5.png" height="350"/>
