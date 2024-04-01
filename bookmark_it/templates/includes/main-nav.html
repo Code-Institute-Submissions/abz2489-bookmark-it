@@ -53,6 +53,15 @@
             <a class="nav-link-lg" href="{% url 'basket' %}">
                 <i class="bi bi-basket3-fill"></i>
             </a>
+            <div>
+                <p class="me-5">
+                    {% if total_price %}
+                        £{{ total_price|floatformat:2 }}
+                    {% else %}
+                        £0.00
+                    {% endif %}
+                </p>
+            </div>
         </li>
     </ul>
 </div>
