@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <!--BOOK SUMMARY-->
+            <!--BOOK COVER-->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="mb-5 mt-md-5">
                     <div class="card-body pb-0">
@@ -40,11 +40,13 @@
                     <p class="book-title mb-0">{{ book.title }}</p>
                     <p class="book-author mb-2">{{ book.author }}</p>
                     <p class="book-price mb-3 text-left">£{{ book.price }}</p>
-                    <form class="form" method="POST" action="">
+
+                    <!--ADD TO BASKET FORM-->
+                    <form class="form" method="POST" action="{% url 'add_to_basket' book.id %}">
                         {% csrf_token %}
-                        <p class=""><strong>Quantity:</strong></p>
+                        <p><strong>Quantity:</strong></p>
                         <div class="form-group">
-                            <div class="input-group">
+                            <div class="input-group w-50">
                                 <div class="input-group-prepend">
                                     <button class="decrement-qty btn" 
                                         data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
@@ -65,8 +67,10 @@
                             </div>
                         </div>
                         <input type="submit" class="btn btn-primary mb-3" value="Buy">
-                        <input type="hidden" name="redirect_url" value="{% url 'book_summary' book.id %}">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </form>
+
+                    <!--BOOK INFO & SUMMARY-->
                     <p class="book-isbn mb-3 text-left"><strong>ISBN:</strong> {{ book.isbn }}</p>
                     <p class="mb-0"><strong>Summary:</strong></p>
                     <p class="book-summary t-3">{{ book.summary }}</p>
