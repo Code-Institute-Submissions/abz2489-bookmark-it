@@ -39,3 +39,22 @@ hr {
   width: 75%;
   margin: auto;
 }
+
+.overlay {
+  width: 95%;
+  height: 100%;
+  margin: auto;
+  margin-top: 3rem;
+}
+
+.btn-primary {
+  background-color: #CC0069;
+  border: none;
+  --bs-btn-hover-color: #EEF7FB;
+  --bs-btn-hover-bg: #01466c;
+  --bs-btn-hover-border-color: #cc0069;
+  --bs-btn-focus-shadow-rgb: none;
+  --bs-btn-active-color: #cc0069;
+  --bs-btn-active-bg: #01466c;
+  --bs-btn-active-shadow: none;
+}
