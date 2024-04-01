@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}Basket{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="">
+{% endblock %}
+
+{% block content %}
+    <div class="overlay">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h1>Basket</h1>
+            </div>
+        </div>
+        <hr class="mt-1 mb-3">
+
+        <!--BASKET-->
+        <div class="row">
+            <div class="col">
+                {% if bag_items %}
+                    <div class="table-responsive rounded"></div>
+                {% else %}
+                    <p class="lead ms-5 mb-3 mt-4">Your bag is empty.</p>
+                    <a href="{% url 'books' %}" class="btn btn-md btn-primary ms-5">
+                        <span class="icon">
+                            <i class="bi bi-book"></i>
+                        </span>
+                        <span class="text-uppercase">Buy books</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
