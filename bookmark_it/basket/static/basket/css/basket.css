@@ -3,9 +3,19 @@
     width: 100px;
 }
 
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group>.form-control {
+  width: 60px;
+}
+
 /*MEDIA QUERIES*/
 @media only screen and (max-width: 426px) {
-    .hide-sm {
-      display: none;
-    }
+  .hide-sm {
+    display: none;
   }
+}
+
