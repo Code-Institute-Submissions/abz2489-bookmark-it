@@ -1,8 +1,7 @@
 <script type="text/javascript">
-    /* Quantity input increase & decrease sourced from Code Institute walkthrough
-    and AJ Greaves bug fix documented in Readme.
-    */
-
+/* Quantity input increase & decrease sourced from Code Institute walkthrough
+and AJ Greaves bug fix documented in Readme.
+*/
 
  function handleEnableDisable(bookId) {
     let currentValue = parseInt($(`.id_qty_${bookId}`).val());
@@ -27,25 +26,21 @@ $('.qty_input').change(function() {
     handleEnableDisable(bookId);
 });
 
-
 $('.increment-qty').click(function(event) {
     event.preventDefault();
     let bookId = $(this).data('book_id');
     let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-    let allQuantityInputs = $(`.input-group-${bookId} input[name='quantity']`);
     let currentValue = parseInt($(closestInput).val());
-    $(allQuantityInputs).val(currentValue + 1);
+    $(allQtyInputs).val(currentValue + 1);
     handleEnableDisable(bookId);
 });
 
 $('.decrement-qty').click(function(event) {
-       event.preventDefault();
-       let bookId = $(this).data('book_id');
-       let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-       let allQuantityInputs = $(`.input-group-${bookId} input[name='quantity']`);
-       let currentValue = parseInt($(closestInput).val());
-       $(allQuantityInputs).val(currentValue - 1);
-       handleEnableDisable(bookId);
+    event.preventDefault();
+    let bookId = $(this).data('book_id');
+    let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+    let currentValue = parseInt($(closestInput).val());
+    $(allQtyInputs).val(currentValue - 1);
+    handleEnableDisable(bookId);
 });
-
 </script>
