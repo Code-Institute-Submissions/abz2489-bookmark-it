@@ -1,0 +1,50 @@
+<script type="text/javascript">
+
+ function handleEnableDisable(bookId) {
+    let currentValue = parseInt($(`.id_qty_${bookId}`).val());
+
+    let minusDisabled = currentValue < 2;
+    let plusDisabled = currentValue > 98;
+
+    $(`.decrement-qty_${bookId}`).prop('disabled', minusDisabled);
+    $(`.increment-qty_${bookId}`).prop('disabled', plusDisabled);
+}
+
+// Ensure proper enabling/disabling of all inputs on page load
+let allQtyInputs = $('.qty_input');
+for(let i = 0; i < allQtyInputs.length; i++){
+    let bookId = $(allQtyInputs[i]).data('book_id');
+    handleEnableDisable(bookId);
+}
+
+// Check enable/disable every time the input is changed
+$('.qty_input').change(function() {
+    let bookId = $(this).data('book_id');
+    handleEnableDisable(bookId);
+});
+
+
+// Increment quantity
+$('.increment-qty').click(function(event) {
+    event.preventDefault();
+    console.log('Increment clicked');
+    let bookId = $(this).data('book_id');
+    let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+    let allQuantityInputs = $(`.input-group-${bookId} input[name='quantity']`);
+    let currentValue = parseInt($(closestInput).val());
+    $(allQuantityInputs).val(currentValue + 1);
+    handleEnableDisable(bookId);
+});
+
+$('.decrement-qty').click(function(event) {
+       event.preventDefault();
+       console.log('Decrement clicked');
+       let bookId = $(this).data('book_id');
+       let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+       let allQuantityInputs = $(`.input-group-${bookId} input[name='quantity']`);
+       let currentValue = parseInt($(closestInput).val());
+       $(allQuantityInputs).val(currentValue - 1);
+       handleEnableDisable(bookId);
+});
+
+</script>

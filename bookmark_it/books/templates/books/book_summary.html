@@ -41,24 +41,24 @@
                     <p class="book-author mb-2">{{ book.author }}</p>
                     <p class="book-price mb-3 text-left">£{{ book.price }}</p>
 
-                    <!--ADD TO BASKET FORM-->
+                    <!--QUANTITY FORM-->
                     <form class="form" method="POST" action="{% url 'add_to_basket' book.id %}">
                         {% csrf_token %}
                         <p><strong>Quantity:</strong></p>
                         <div class="form-group">
-                            <div class="input-group w-50">
+                            <div class="input-group input-group{{ book.id }} w-50">
                                 <div class="input-group-prepend">
-                                    <button class="decrement-qty btn" 
-                                        data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
+                                    <button class="decrement-qty decrement-qty_{{ book.id }} btn" 
+                                        data-book_id="{{ book.id }}" id="{{ book.id }}">
                                         <span class="icon">
                                             <i class="bi bi-dash"></i>
                                         </span>
                                     </button>
                                 </div>
-                                <input class="form-control mb-2 qty_input w-25" type="number" name="quantity" value="1" min="1" max="19" data-book_id="{{ book.id }}" id="id_qty_{{ book.id }}">
+                                <input class="form-control mb-2 qty_input id_qty_{{ book.id }} w-25" type="number" name="quantity" value="1" min="1" max="99" data-book_id="{{ book.id }}">
                                 <div class="input-group-append">
-                                    <button class="increment-qty btn btn-black rounded-0"
-                                        data-item_id="{{ book.id }}" id="increment-qty_{{ book.id }}">
+                                    <button class="increment-qty btn increment-qty_{{ book.id }}"
+                                        data-book_id="{{ book.id }}">
                                         <span class="icon">
                                             <i class="bi bi-plus"></i>
                                         </span>
@@ -78,4 +78,9 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {% include 'books/includes/qty_input.html' %}
 {% endblock %}
