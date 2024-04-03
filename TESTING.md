@@ -32,4 +32,6 @@ The first image shows 15 results when the word "children" was searched, this sho
 <img src="documentation/bugs/bmi-bug5.png" height="350"/>
 <img src="documentation/bugs/bmi-fix5.png" height="350"/>
 
-6. Quantity increase and decrease buttons aren't working when clicked. The rest of the logic works; disabling the buttons at certain points. Fixed, I was missing a simple hyphen in one of the classes.
+6. Quantity increase and decrease buttons on the book summary page aren't working when clicked. The rest of the logic works; disabling the buttons at certain points. Fixed, I was missing a simple hyphen in one of the classes.
+
+7. Quantity increase and decrease buttons work on the book summary page but not on the basket page. I had two different variables for .qty-input in the script; allQtyInputs and allQuantityInputs. Fixed by removing allQuantityInputs and replacing it with allQtyInputs. Both quantity inputs on the book summary page and the basket page now increment and decrement.
