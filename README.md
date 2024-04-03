@@ -207,6 +207,9 @@ User profiles on Bookmark-It include a dedicated section that provides insights 
 - W3Schools JS matchmedia.
 [JS Matchmedia](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_matchmedia)
 
+- Code Institute Boutique Ado walkthrough & AJ Greaves commit record for bug fix.
+[AJ Greaves commit record ](https://github.com/Code-Institute-Solutions/boutique_ado_v1/commit/de7ad2067ac1b5de37a4cd8b9f4ddf572a4bf6c7)
+
 ## Images
 
 ## Text
