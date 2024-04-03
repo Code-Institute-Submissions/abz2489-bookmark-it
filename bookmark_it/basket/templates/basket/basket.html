@@ -4,7 +4,7 @@
 {% block extra_title %}Basket{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="{% static 'basket/css/basket.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -19,20 +19,62 @@
         <!--BASKET-->
         <div class="row">
             <div class="col">
-                {% if bag_items %}
-                    <div class="table-responsive rounded"></div>
+                {% if basket_items %}
+                    <div class="table-responsive">
+                        <table class="table table-sm table-borderless">
+                            <thead>
+                                <tr>           
+                                    <th scope="col">Book</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Subtotal</th>
+                                </tr>
+                            </thead>
+
+                            {% for item in basket_items %}
+                                <tr>
+                                    <td class="p-3 w-25">
+                                        <img class="cover-img-xsml hide-sm" src="{{ item.book.cover.url }}">
+                                        <p class="my-0"><strong>{{ item.book.title }}</strong></p>
+                                        <p class="my-0 small text-muted">ISBN: {{ item.book.isbn }}</p>
+                                    </td>
+                                    <td class="py-3 col">
+                                        <p class="my-0">£{{ item.book.price }}</p>
+                                    </td>
+                                    <td class="py-3 w-25 col">
+                                        <p class="my-0">{{ item.quantity }}</p>
+                                    </td>
+                                    <td class="py-3">
+                                        <p class="my-0">£{{ item.book.price }}</p>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="4" class="pt-5">
+                                    <h6><strong>Basket Total: £{{ total_price|floatformat:2 }}</strong></h6>
+                                    <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+                                    <h4 class="mt-4"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="">
+                                    <a href="{% url 'books' %}" class="btn btn-md">
+                                        <span class="btn btn-secondary btn-md">Continue Shopping</span>
+                                    </a>
+                                    <a href="" class="btn btn-md">
+                                        <span class="btn btn-primary btn-md">Secure Checkout</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 {% else %}
-                    <p class="lead ms-5 mb-3 mt-4">Your bag is empty.</p>
-                    <a href="{% url 'books' %}" class="btn btn-md btn-primary ms-5">
-                        <span class="icon">
-                            <i class="bi bi-book"></i>
-                        </span>
-                        <span class="text-uppercase">Buy books</span>
+                    <p class="lead mb-5">Your bag is empty.</p>
+                    <a href="{% url 'books' %}" class="mb-2">
+                        <span class="btn btn-primary">Keep Shopping</span>
                     </a>
                 {% endif %}
             </div>
         </div>
-
     </div>
-
 {% endblock %}

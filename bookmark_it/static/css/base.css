@@ -35,6 +35,10 @@ input, button, textarea, select {
   }
 
 /*GLOBAL STYLES*/
+.bi {
+  font-size: 1.50rem;
+}
+
 hr {
   width: 75%;
   margin: auto;
@@ -58,3 +62,5 @@ hr {
   --bs-btn-active-bg: #01466c;
   --bs-btn-active-shadow: none;
 }
+
+/*MEDIA QUERIES*/

@@ -1,0 +1,11 @@
+.cover-img-xsml {
+    height: 150px;
+    width: 100px;
+}
+
+/*MEDIA QUERIES*/
+@media only screen and (max-width: 426px) {
+    .hide-sm {
+      display: none;
+    }
+  }
