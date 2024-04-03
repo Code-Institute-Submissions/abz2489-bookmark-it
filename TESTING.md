@@ -31,3 +31,5 @@ The first image shows 15 results when the word "children" was searched, this sho
 
 <img src="documentation/bugs/bmi-bug5.png" height="350"/>
 <img src="documentation/bugs/bmi-fix5.png" height="350"/>
+
+6. Quantity increase and decrease buttons aren't working when clicked. The rest of the logic works; disabling the buttons at certain points. Fixed, I was missing a simple hyphen in one of the classes.
