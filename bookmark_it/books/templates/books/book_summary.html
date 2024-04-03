@@ -46,7 +46,7 @@
                         {% csrf_token %}
                         <p><strong>Quantity:</strong></p>
                         <div class="form-group">
-                            <div class="input-group input-group{{ book.id }} w-50">
+                            <div class="input-group input-group-{{ book.id }} w-50">
                                 <div class="input-group-prepend">
                                     <button class="decrement-qty decrement-qty_{{ book.id }} btn" 
                                         data-book_id="{{ book.id }}" id="{{ book.id }}">

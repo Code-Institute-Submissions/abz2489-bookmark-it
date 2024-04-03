@@ -27,7 +27,6 @@ $('.qty_input').change(function() {
 // Increment quantity
 $('.increment-qty').click(function(event) {
     event.preventDefault();
-    console.log('Increment clicked');
     let bookId = $(this).data('book_id');
     let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
     let allQuantityInputs = $(`.input-group-${bookId} input[name='quantity']`);
@@ -38,7 +37,6 @@ $('.increment-qty').click(function(event) {
 
 $('.decrement-qty').click(function(event) {
        event.preventDefault();
-       console.log('Decrement clicked');
        let bookId = $(this).data('book_id');
        let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
        let allQuantityInputs = $(`.input-group-${bookId} input[name='quantity']`);
