@@ -31,7 +31,7 @@ $('.increment-qty').click(function(event) {
     let bookId = $(this).data('book_id');
     let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
     let currentValue = parseInt($(closestInput).val());
-    $(allQtyInputs).val(currentValue + 1);
+    $(closestInput).val(currentValue + 1);
     handleEnableDisable(bookId);
 });
 
@@ -40,7 +40,7 @@ $('.decrement-qty').click(function(event) {
     let bookId = $(this).data('book_id');
     let closestInput = $(this).closest('.input-group').find('.qty_input')[0];
     let currentValue = parseInt($(closestInput).val());
-    $(allQtyInputs).val(currentValue - 1);
+    $(closestInput).val(currentValue - 1);
     handleEnableDisable(bookId);
 });
 </script>
