@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
 from django.contrib import messages
 
 from . import views
@@ -46,3 +46,20 @@ def adjust_basket(request, book_id):
 
     request.session['basket'] = basket
     return redirect(reverse('basket'))
+
+
+def remove_from_basket(request, book_id):
+    """Remove a selected book from the basket"""
+
+    book = get_object_or_404(Book, id=book_id)
+
+    try:
+        basket = request.session.get("basket", {})
+        basket.pop(book_id)
+        messages.success(request, f'Removed {book.title} from your basket')
+        request.session["basket"] = basket
+
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)
