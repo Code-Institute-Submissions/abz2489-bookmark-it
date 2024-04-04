@@ -39,10 +39,10 @@ def adjust_basket(request, book_id):
 
     if quantity > 0:
             basket[book_id] = quantity
-            messages.success(request, f'Updated {book.title} quantity to {basket[book_id]}')
+            messages.success(request, f'Updated quantity of {book.title} to {basket[book_id]}')
     else:
             basket.pop(book_id)
-            messages.success(request, f'Removed {book.title} quantity to {basket[book_id]}')
+            messages.success(request, f'Removed {book.title} from basket.')
 
     request.session['basket'] = basket
     return redirect(reverse('basket'))
