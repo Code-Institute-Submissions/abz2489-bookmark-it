@@ -56,7 +56,7 @@
                                                     </div>
                                                     <input class="form-control qty_input id_qty_{{ item.book_id }}" 
                                                          type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                                        data-book_id="{{ item.book_id }}">
+                                                            data-book_id="{{ item.book_id }}">
                                                     <div class="input-group-append">
                                                         <button class="increment-qty qty-btn btn btn-sm increment-qty_{{ item.book_id }}"
                                                             data-book_id="{{ item.book_id }}">
@@ -68,7 +68,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <a href="{% url 'adjust_basket' item.book_id %}" class="update-link text-info pointer me-3"><small>Update</small></a>
+                                        <a class="update-link text-info pointer me-3"><small>Update</small></a>
                                         <a class="remove-item text-danger pointer float-right" 
                                             type="submit" id="remove_{{ item.book_id }}"><small>Remove</small></a>
                                     </td>
