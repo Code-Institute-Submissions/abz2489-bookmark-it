@@ -121,20 +121,14 @@
         // Remove item and reload on click
         $('.remove-item').click(function(e) {
             let csrfToken = "{{ csrf_token }}";
-            console.log(csrfToken)
             let bookId = $(this).attr('id').split('remove_')[1];
-            console.log(bookId)
             let url = `/basket/remove/${bookId}/`;
-            console.log(url)
             let data = {'csrfmiddlewaretoken': csrfToken};
-            console.log(data)
     
             $.post(url, data)
              .done(function() {
                  location.reload();
              });
-            console.log("Sending POST request to:", url);
-            console.log("Data being sent:", data);
         })
     </script>
 {% endblock %}
