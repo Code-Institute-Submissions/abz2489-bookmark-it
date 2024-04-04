@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 
 from . import views
@@ -27,7 +27,6 @@ def add_to_basket(request, book_id):
         messages.success(request, f'Added {book.title} by {book.author} to your basket')
 
     request.session['basket'] = basket
-    print(request.session['basket'])
     return redirect(redirect_url)
 
 
