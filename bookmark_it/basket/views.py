@@ -29,3 +29,21 @@ def add_to_basket(request, book_id):
     request.session['basket'] = basket
     print(request.session['basket'])
     return redirect(redirect_url)
+
+
+def adjust_basket(request, book_id):
+    """Adjust quantity of books in basket"""
+    
+    book = get_object_or_404(Book, id=book_id)
+    quantity = int(request.POST.get('quantity'))
+    basket = request.session.get('basket', {})
+
+    if quantity > 0:
+            basket[book_id] = quantity
+            messages.success(request, f'Updated {book.title} quantity to {basket[book_id]}')
+    else:
+            basket.pop(book_id)
+            messages.success(request, f'Removed {book.title} quantity to {basket[book_id]}')
+
+    request.session['basket'] = basket
+    return redirect(reverse('basket'))
