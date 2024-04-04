@@ -35,3 +35,10 @@ The first image shows 15 results when the word "children" was searched, this sho
 6. Quantity increase and decrease buttons on the book summary page aren't working when clicked. The rest of the logic works; disabling the buttons at certain points. Fixed, I was missing a simple hyphen in one of the classes.
 
 7. Quantity increase and decrease buttons work on the book summary page but not on the basket page. I had two different variables for .qty-input in the script; allQtyInputs and allQuantityInputs. Fixed by removing allQuantityInputs and replacing it with allQtyInputs. Both quantity inputs on the book summary page and the basket page now increment and decrement.
+
+8. Basket page not displaying following the addition of my adjust_basket view. The error displayed is "NoReverseMatch at /basket/
+Reverse for 'adjust_basket' with arguments '('',)' not found. 1 pattern(s) tried: ['basket/adjust/(?P<book_id>[^/]+)/\\Z']".
+Fixed with the help of slack. I had entered the book_id arguement for the form URL and update link URL incorrectly.
+
+<img src="documentation/bugs/bmi-bug8.png" width="500"/>
+<img src="documentation/bugs/bmi-fix8.png" width="350"/>
