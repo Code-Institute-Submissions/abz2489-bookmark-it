@@ -69,7 +69,7 @@
                                             </div>
                                         </form>
                                         <a class="update-link text-info pointer me-3"><small>Update</small></a>
-                                        <a class="remove-item text-danger pointer float-right" 
+                                        <a class="remove-item text-danger float-right" 
                                             type="submit" id="remove_{{ item.book_id }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
@@ -121,14 +121,20 @@
         // Remove item and reload on click
         $('.remove-item').click(function(e) {
             let csrfToken = "{{ csrf_token }}";
+            console.log(csrfToken)
             let bookId = $(this).attr('id').split('remove_')[1];
-            let url = `/basket/remove/${bookId}`;
+            console.log(bookId)
+            let url = `/basket/remove/${bookId}/`;
+            console.log(url)
             let data = {'csrfmiddlewaretoken': csrfToken};
+            console.log(data)
     
             $.post(url, data)
              .done(function() {
                  location.reload();
              });
+            console.log("Sending POST request to:", url);
+            console.log("Data being sent:", data);
         })
     </script>
 {% endblock %}
