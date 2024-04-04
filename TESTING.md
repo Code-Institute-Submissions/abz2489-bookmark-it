@@ -42,3 +42,10 @@ Fixed with the help of slack. I had entered the book_id arguement for the form U
 
 <img src="documentation/bugs/bmi-bug8.png" width="500"/>
 <img src="documentation/bugs/bmi-fix8.png" width="350"/>
+
+9. Adjusting the quantity input on one book in the basket causes all quantity inputs to change. My qty_input.html had the imcrement and decrement being called on the allQtyInputs variable. I switched this to closestInput which has fixed the issue.
+
+<img src="documentation/bugs/bmi-bug9.png" width="350"/>
+<img src="documentation/bugs/bmi-fix9.png" width="350"/>
+
+10. Clicking the update button throws a type error. Fixed by removing a duplicate adjust_basket url from the update link. This fix highlighted and issue in my views, I forgot to import reverse.
