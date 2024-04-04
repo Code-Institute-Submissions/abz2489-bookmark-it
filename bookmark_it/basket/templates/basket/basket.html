@@ -42,7 +42,7 @@
                                         <p class="my-0">£{{ item.book.price }}</p>
                                     </td>
                                     <td class="py-3 col">
-                                        <form class="form update-form" method="POST" action="{% url 'adjust_basket' book_id %}">
+                                        <form class="form update-form" method="POST" action="{% url 'adjust_basket' item.book_id %}">
                                             {% csrf_token %}
                                             <div class="form-group">
                                                 <div class="input-group input-group-{{ item.Book }}">
@@ -68,7 +68,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <a href="{% url 'adjust_basket' book_id %}" class="update-link text-info pointer me-3"><small>Update</small></a>
+                                        <a href="{% url 'adjust_basket' item.book_id %}" class="update-link text-info pointer me-3"><small>Update</small></a>
                                         <a class="remove-item text-danger pointer float-right" 
                                             type="submit" id="remove_{{ item.book_id }}"><small>Remove</small></a>
                                     </td>
