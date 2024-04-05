@@ -1,3 +1,9 @@
+
 input {
     margin-bottom: 15px;
+}
+
+#payment-form .form-control,
+#card-element {
+    border: 1px solid #000;
 }
