@@ -86,7 +86,7 @@
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-4">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                    <legend class="fieldset-label px-2 w-auto">Details</legend>
                     {{ order_form.full_name | as_crispy_field }}
                     {{ order_form.email | as_crispy_field }}
                 </fieldset>
@@ -125,7 +125,7 @@
                 </fieldset>
 
                 <div class="mt-5 mb-2 mx-4">
-                    <a href="{% url 'basket' %}" class="btn btn-secondary ms-4 me-3 mb-4" id="btn-adjust">
+                    <a href="{% url 'basket' %}" class="btn btn-secondary mb-4" id="btn-adjust">
                         <span class="font-weight-bold">Amend Order</span>
                     </a>
                     <button id="submit-button" class="btn btn-primary mb-4" id="btn-submit">
