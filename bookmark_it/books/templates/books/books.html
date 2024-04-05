@@ -114,5 +114,6 @@
 
 {% block postloadjs %}
     {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
     <script type="text/javascript" src="{% static 'books/js/books.js' %}"></script>
 {% endblock %}
