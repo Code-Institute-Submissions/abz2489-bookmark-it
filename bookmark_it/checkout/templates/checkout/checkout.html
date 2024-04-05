@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% load basket_tools %}
+
+{% block content %}
+    <div class="overlay">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h1>Basket</h1>
+            </div>
+        </div>
+        <hr class="mt-1 mb-3">
+
+        <!--ORDER SUMMARY ACCORDION-->
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <span>
+                            <i class="bi bi-basket3-fill text-body pe-2"></i>
+                            <span>
+                                Order Summary
+                            </span>
+                            <span>
+                                £{{ total_price|floatformat:2 }}
+                            </span>
+                        </span>
+                    </button>
+                </h2>
+
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="charges-summary mb-5 px-0 mx-auto w-75">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p class="mb-1 mt-0 small">Book</p>
+                                </div>
+                                <div class="col-3">
+                                    <p class="mb-1 mt-0 small">Qty</p>
+                                </div>
+                                <div class="col-5 col-md-3">
+                                    <p class="mb-1 mt-0 small">Subtotal</p>
+                                </div>
+                            </div>
+
+                            {% for book in basket_items %}
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p class="mb-1 mt-0 small">{{ book.book.title }}</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="mb-1 mt-0 small">{{ book.quantity }}</p>
+                                    </div>
+                                    <div class="col-5 col-md-3">
+                                        <p class="mb-1 mt-0 small">£{{ book.book.price | calc_subtotal:book.quantity }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <hr class="my-0 w-100">
+
+                        <div class="row text-black mx-auto">
+                            <div class="col-8 col-md-4">
+                                <p class="my-0 w-100">Order Total:</p>
+                                <p class="my-0 w-100">Delivery:</p>
+                                <p class="my-0 w-100">Grand Total:</p>
+                            </div>
+                            <div class="col-4 col-md-2 ps-md-4">
+                                <p class="my-0">£{{ total_price | floatformat:2 }}</p>
+                                <p class="my-0">£{{ delivery | floatformat:2 }}</p>
+                                <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--DELIVERY DETAILS FORM-->
+
+    </div>
+{% endblock %}
