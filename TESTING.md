@@ -51,3 +51,8 @@ Fixed with the help of slack. I had entered the book_id arguement for the form U
 10. Clicking the update button throws a type error. Fixed by removing a duplicate adjust_basket url from the update link. This fix highlighted and issue in my views, I forgot to import reverse.
 
 11. Remove link on basket page is throwing a 500 error when clicked.Fixed by adding a trailing slash to the url variable in jquery ```let url = `/basket/remove/${bookId}/`;```
+
+12. Book covers on the books page disappeared after adding media context processor to project level settings. Fixed by removing the {{ MEDIA_URL }}.
+
+<img src="documentation/bugs/bmi-bug12.png" width="350"/>
+<img src="documentation/bugs/bmi-fix12.png" width="350"/>
