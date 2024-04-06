@@ -35,6 +35,10 @@ input, button, textarea, select {
   }
 
 /*GLOBAL STYLES*/
+.form-control {
+  border: 1px solid #198a98;
+}
+
 .bi {
   font-size: 1.35rem;
 }
