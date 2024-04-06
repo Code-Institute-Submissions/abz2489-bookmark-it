@@ -56,3 +56,7 @@ Fixed with the help of slack. I had entered the book_id arguement for the form U
 
 <img src="documentation/bugs/bmi-bug12.png" width="350"/>
 <img src="documentation/bugs/bmi-fix12.png" width="350"/>
+
+13. Import error when trying to run the server due to a circular import. I accidentally imported ```from .webhooks import webhook``` in both webhook_handler.py and webhooks.py. Fixed by removing the import from webhook_handler.py.
+
+<img src="documentation/bugs/bmi-bug13.png" width="500" height="50"/>
