@@ -83,7 +83,21 @@ User profiles on Bookmark-It include a dedicated section that provides insights 
 | 29  | account holder                   | view reviews written by other users                          | make decisions on my own purchases                                                    | Build<br>Test<br>Done   |
 
 ### Database
-![Bookmark-It Relational Database](documentation/features/bmi-db.png)
+First draft:
+
+![Bookmark-It Relational Database](documentation/features/bmi-db1.png)
+
+Second draft:
+
+![Bookmark-It Relational Database](documentation/features/bmi-db2.png)
+ 
+After a review of my books model I decided I could add some more information on the book summary page such as date published and price. The addition of Media Reviews allows the user to see how this book has been reviewed by other authors and works as a USP for the books. Adding in a series field allows the user to see if the book is part of a series. This prompted me to add the series_book_number field so the user can easily identify which number the book is in the series. No avid reader would want to start a series half way through unknowingly.
+
+My mentor prompted me with questions on how the reading status would work. This helped me realise that by having the reading status categories directly in the Bookmark table the user would need to update all three options to True / False. I created a separate ReadingStatus table with the three options that has a one to many relationship with the Bookmark table allowing me to use a dropdown select.
+
+I amended the table names to reflect as they would in my models.
+
+I was missing lineitem_total on the OrderLineItem model and added this in.
 
 
 ## Skeleton
@@ -156,8 +170,16 @@ User profiles on Bookmark-It include a dedicated section that provides insights 
 
 ### Checkout
 **Mobile**
+
+<img src="documentation/wireframes/bmi-checkout-m.png" height="750" width="300"/>
+
 **Tablet**
+
+<img src="documentation/wireframes/bmi-checkout-t.png" height="750" width="350"/>
+
 **Desktop**
+
+<img src="documentation/wireframes/bmi-checkout-d.png" height="750" width="500"/>
 
 ### Checkout Success
 **Mobile**
