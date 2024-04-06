@@ -183,8 +183,16 @@ I was missing lineitem_total on the OrderLineItem model and added this in.
 
 ### Checkout Success
 **Mobile**
+
+<img src="documentation/wireframes/bmi-checkout-success-m.png" height="750" width="300"/>
+
 **Tablet**
+
+<img src="documentation/wireframes/bmi-checkout-success-t.png" height="750" width="350"/>
+
 **Desktop**
+
+<img src="documentation/wireframes/bmi-checkout-success-d.png" height="750" width="500"/>
 
 ### Profile
 **Mobile**
