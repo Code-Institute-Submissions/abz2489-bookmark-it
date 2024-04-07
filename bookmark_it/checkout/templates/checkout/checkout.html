@@ -16,7 +16,7 @@
         <hr class="mt-1 mb-3">
 
         <!--ORDER SUMMARY ACCORDION-->
-        <div class="accordion" id="accordionExample">
+        <div class="accordion mx-auto" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -81,7 +81,7 @@
         </div>
 
         <!--DELIVERY DETAILS FORM-->
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6 mx-auto">
             <p class="pt-4 ps-3">Please fill out your details in the form below</p>
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
@@ -127,7 +127,7 @@
                     <input type="hidden" value="{{ client_secret }}" name="client_secret">
                 </fieldset>
 
-                <div class="mt-5 mb-2 mx-4">
+                <div class="mt-5 mb-2 mx-4 ms-5">
                     <a href="{% url 'basket' %}" class="btn btn-secondary mb-4" id="btn-adjust">
                         <span class="font-weight-bold">Amend Order</span>
                     </a>
