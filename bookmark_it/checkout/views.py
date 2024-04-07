@@ -60,7 +60,11 @@ def checkout(request):
         # If the form is valid, save data
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_basket = json.dumps(basket)
+            order.save()
 
             # Create new order line item for each book in basket
             for book_id, book_data in basket.items():
@@ -92,7 +96,6 @@ def checkout(request):
                 Please double check your information.")
 
     else:
-
         basket = request.session.get('basket', {})
         if not basket:
             messages.error(request, 'Your basket is empty!')
