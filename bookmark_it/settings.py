@@ -33,7 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '8000-abz2489-bookmarkit-su6afnii4cv.ws-eu110.gitpod.io',
     '8000-abz2489-bookmarkit-0pe3z8edyi0.ws-eu110.gitpod.io',
-    'bookmark-it-cb2e546b9314.herokuapp.com/'
+    'bookmark-it-cb2e546b9314.herokuapp.com'
     ]
 
 
