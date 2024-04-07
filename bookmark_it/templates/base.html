@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
         {% block meta %}
             <meta charset="UTF-8">
@@ -60,7 +60,7 @@
                 <div class="container d-none d-sm-block d-md-none d-lg-block d-sm-none d-md-block me-5">
                     <div class="col">
                         <form method="GET" action="{% url 'books' %}" class="mt-2 d-flex w-100" role="search" id="search">
-                            <input class="form-control w-100" type="search" placeholder="Search" aria-label="Search" name="q" id="search">
+                            <input class="form-control w-100" type="search" placeholder="Search" aria-label="Search" name="q">
                             <button class="btn btn-primary" id="search-btn" type="submit"><i class="bi bi-search"></i>
                             </button>
                         </form>
@@ -104,7 +104,7 @@
 
         {% block postloadjs %}
         {{ block.super }}
-            <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+            <script src="{% static 'js/base.js' %}"></script>
         {% endblock %}
     </body>
 

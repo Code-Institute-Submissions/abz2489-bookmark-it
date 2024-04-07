@@ -30,7 +30,7 @@
                     <option value="3" data-url="{% url 'books' %}?sort=price&direction=asc" 
                     {% if current_sorting == "price_asc" %}selected{% endif %}>Price (Low to High)</option>
                     <option value="4" data-url="{% url 'books' %}?sort=price&direction=desc"
-                    {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (High to Low)</a></option>
+                    {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (High to Low)</option>
                 </select>
             </div>
             <div class="col-4">
@@ -102,7 +102,7 @@
     
     <!--BACK TO TOP BUTTON-->
     <div class="mt-5">
-        <a class="d-flex h-100"data-bs-toggle="tooltip" data-bs-placement="top"
+        <a class="d-flex h-100" data-bs-toggle="tooltip" data-bs-placement="top"
         data-bs-custom-class="custom-tooltip" data-bs-title="Back to Top">
             <i class="bi bi-arrow-up-square mx-auto my-auto" id="arrow-up" onmouseenter="fillSquare(this)" 
             onmouseleave="emptySquare(this)" onclick="scrollToTop()"></i>
@@ -114,6 +114,6 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
-    <script type="text/javascript" src="{% static 'books/js/books.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'books/js/books.js' %}"></script>
 {% endblock %}
