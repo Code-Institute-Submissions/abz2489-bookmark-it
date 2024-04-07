@@ -46,15 +46,15 @@ def checkout(request):
         basket = request.session.get('basket', {})
 
         form_data = {
-            "full_name": request.POST.get("full_name", ""),
-            "email": request.POST.get("email", ""),
-            "phone_number": request.POST.get("phone_number", ""),
-            "country": request.POST.get("country", ""),
-            "post_code": request.POST.get("post_code", ""),
-            "town_or_city": request.POST.get("town_or_city", ""),
-            "street_address1": request.POST.get("street_address1", ""),
-            "street_address2": request.POST.get("street_address2", ""),
-            "county": request.POST.get("county", ""),
+            'full_name': request.POST['full_name'],
+            'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'country': request.POST['country'],
+            'postcode': request.POST['postcode'],
+            'town_or_city': request.POST['town_or_city'],
+            'street_address1': request.POST['street_address1'],
+            'street_address2': request.POST['street_address2'],
+            'county': request.POST['county'],
         }
 
         # If the form is valid, save data
@@ -85,12 +85,12 @@ def checkout(request):
                         "Please call us for assistance!")
                     )
                     order.delete()
-                    return redirect(reverse("view_basket"))
+                    return redirect(reverse('view_basket'))
 
             # If order is successful, show checkout success page
             # If form is invalid, display error message to user
-            request.session["save_info"] = "save-info" in request.POST
-            return redirect(reverse("checkout_success", args=[order.order_number]))
+            request.session['save_info'] = 'save-info' in request.POST
+            return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, "There was an error with your form. \
                 Please double check your information.")
@@ -102,13 +102,13 @@ def checkout(request):
             return redirect(reverse('books'))
 
         current_basket = basket_contents(request)
-        total = current_basket["grand_total"]
+        total = current_basket['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
-                amount=stripe_total,
-                currency=settings.STRIPE_CURRENCY
-            )
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY
+        )
 
         order_form = OrderForm()
 
@@ -129,11 +129,11 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
-    save_info = request.session.get("save_info")
+    save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Order processed successfully! \
         Your order number is {order_number}. A confirmation \
-            will be sent to {order.email}.')
+            email will be sent to {order.email}.')
     
     if "basket" in request.session:
         del request.session["basket"]
