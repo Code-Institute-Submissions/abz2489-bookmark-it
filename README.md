@@ -220,6 +220,23 @@ I was missing lineitem_total on the OrderLineItem model and added this in.
 # Testing
 
 # Deployment
+Heroku was used to deploy this project. Follow the steps below to deploy.
+
+## Create Database
+
+1. Navigate to [ElephantSQL](https://www.elephantsql.com/) Dashboard and click the green "Create New Instance" button.
+
+2. Choose a name for your plan and make sure the Tiny Turtle (free) plan is selected.
+
+3. Double check your details are as you want them before clicking the green "Select Region" button in the bottom right.
+
+4. Choose the region nearest to you and click the green "Review" button in the bottom right.
+
+5. Check the details are all correct and click the green "Create Instance" button in the bottom right.
+
+6. Navigate back to the Dashboard and click on the instance you created.
+
+7. Find URL under detail and click reveal to see the full URL then click the copy button.
 
 # Future Features
 
