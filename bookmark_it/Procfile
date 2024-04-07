@@ -1,1 +1,1 @@
-heroku config:set DISABLE_COLLECTSTATIC=1 --app bookmark-it
+web: gunicorn bookmark-it.wsgi:application
