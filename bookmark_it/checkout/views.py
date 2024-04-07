@@ -4,7 +4,7 @@ from django.shortcuts import (
     reverse,
     get_object_or_404,
     HttpResponse
-) 
+)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -78,10 +78,12 @@ def checkout(request):
                         )
                         order_line_item.save()
 
-                # If a book isn't found, delete empty order and return to basket
+                # If a book isn't found
+                # Delete empty order and return to basket
                 except Book.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your basket wasn't found in our database."
+                        "One of the products in your basket \
+                         wasn't found in our database."
                         "Please call us for assistance!")
                     )
                     order.delete()
@@ -90,7 +92,8 @@ def checkout(request):
             # If order is successful, show checkout success page
             # If form is invalid, display error message to user
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                'checkout_success', args=[order.order_number]))
         else:
             messages.error(request, "There was an error with your form. \
                 Please double check your information.")
@@ -134,10 +137,10 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order processed successfully! \
         Your order number is {order_number}. A confirmation \
             email will be sent to {order.email}.')
-    
+
     if "basket" in request.session:
         del request.session["basket"]
-    
+
     template = "checkout/checkout_success.html"
     context = {
         "order": order,
