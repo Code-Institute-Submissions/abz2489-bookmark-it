@@ -1,1 +1,1 @@
-web: gunicorn bookmark-it.wsgi:application
+web: gunicorn bookmark_it.wsgi:application
