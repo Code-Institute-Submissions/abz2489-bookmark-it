@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'books/css/books.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -15,9 +16,9 @@
 
         <!--BOOK COVERS-->
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 col-md-5 col-lg-3 offset-lg-2">
-                    <div class="image-container my-5">
+            <div class="row d-flex align-items-center justify-content-center mb-4">
+                <div class="col-10 col-md-5 col-lg-4 mb-2">
+                    <div class="image-container">
                         {% if book.cover %}
                             <a href="{{ book.cover.url }}" target="_blank">
                                 <img class="cover-img-med img-fluid" src="{{ book.cover.url }}" alt="{{ book.title }}">
@@ -27,16 +28,17 @@
                         {% endif %}
                     </div>
                 </div>
-            </div>
-
-            <!--BOOK COVER-->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="mb-5 mt-md-5">
+                
+                <!--BOOK MAIN INFO-->
+                <div class="col-12 col-md-7 col-lg-5">
                     <div class="card-body pb-0">
                         <p class="category-badge mb-0 badge rounded-pill">{{ book.category.friendly_name}}</p>
                     </div>
                     <p class="book-title mb-0">{{ book.title }}</p>
                     <p class="book-author mb-2">{{ book.author }}</p>
+                    {% if book.series %}
+                        <p class="mb-0">Book <strong>{{book.number_in_series}}</strong> of <strong>{{ book.series }}</strong> series</p>
+                    {% endif %}
                     <p class="book-price mb-3 text-left">£{{ book.price }}</p>
 
                     <!--QUANTITY FORM-->
@@ -64,12 +66,24 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-primary mb-3" value="Buy">
+                        <input type="submit" class="btn btn-primary mt-2 mb-3" value="Buy">
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </form>
 
-                    <!--BOOK INFO & SUMMARY-->
-                    <p class="book-isbn mb-3 text-left"><strong>ISBN:</strong> {{ book.isbn }}</p>
+                    <!--BOOK INFO CONTINUED-->
+                    <p class="book-isbn mb-1 text-left"><strong>ISBN:</strong> {{ book.isbn }}</p>
+                    {% if book.pages %}
+                    <p class="mb-1 text-left"><strong>Pages:</strong> {{ book.pages }}</p>
+                    {% endif %}
+                    {% if book.date_published %}
+                    <p class="mb-1 text-left"><strong>Published:</strong> {{ book.date_published }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!--BOOK SUMMARY-->
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-md-9">
                     <p class="mb-0"><strong>Summary:</strong></p>
                     <p class="book-summary t-3">{{ book.summary }}</p>
                 </div>
