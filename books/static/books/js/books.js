@@ -13,13 +13,13 @@ function optionUrl(option) {
 }
 
 /*Functions to switch the bootstrap arrow icon depending on hover state*/
-function fillSquare(icon) {
+function fillSquare() {
     let arrowUp = document.getElementById("arrow-up");
     arrowUp.classList.remove("bi-arrow-up-square");
     arrowUp.classList.add("bi-arrow-up-square-fill");
 }
 
-function emptySquare(icon) {
+    function emptySquare() {
     let arrowUp = document.getElementById("arrow-up");
     arrowUp.classList.remove("bi-arrow-up-square-fill");
     arrowUp.classList.add("bi-arrow-up-square");
