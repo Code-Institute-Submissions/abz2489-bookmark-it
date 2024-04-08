@@ -21,7 +21,10 @@ class Book(models.Model):
     author = models.CharField(max_length=254)
     isbn = models.BigIntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    cover_url = models.URLField(max_length=1024, null=True, blank=True)
+    pages = models.IntegerField(null=True, blank=True)
+    series = models.CharField(max_length=254, null=True, blank=True)
+    number_in_series = models.IntegerField(null=True, blank=True)
+    date_published = models.CharField(max_length=254, null=True, blank=True)
     cover = models.ImageField(null=True, blank=True)
 
     def __str__(self):
