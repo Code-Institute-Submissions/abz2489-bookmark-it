@@ -44,14 +44,17 @@
         </li>
         
         <!--BOOKMARK & BASKET-->
-        <li class="nav-item me-3">
-            <a class="nav-link-lg" href="">
-                <i class="bi bi-bookmark"></i>
-            </a>
-        </li>
+        {% if request.user.is_superuser %}
+            <li class="nav-item me-3">
+                <a class="nav-link-lg" href="" data-bs-toggle="tooltip" data-bs-placement="left"
+                data-bs-custom-class="custom-tooltip" data-bs-title="Your Bookmark">
+                    <i class="bi bi-bookmark bookmark icon"></i>
+                </a>
+            </li>
+        {% endif %}
         <li class="nav-item">
             <a class="nav-link-lg" href="{% url 'basket' %}">
-                <i class="bi bi-basket3"></i>
+                <i class="bi bi-basket3 icon"></i>
             </a>
             <div>
                 <p class="me-5">
