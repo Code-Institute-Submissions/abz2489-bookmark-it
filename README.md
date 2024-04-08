@@ -283,11 +283,14 @@ Heroku was used to deploy this project. Follow the steps below to deploy.
 
 7. If you do see the message along with a list of migrations run ```python3 manage.py migrate``` in the terminal to make these migrartions.
 
-8. Run ```python3 manage.py createsuperuser``` to create a superuser for your database. You will see a prompt in the terminal to enter a Username followed by Email and then Password.
+8. If you have JSON fixtures with your products you now need to load the data to your new database with. Be sure to start with categories first and then your products.
+    ```python3 manage.py loaddata fixture-name```
 
-9. To check that your superuser was created successfully navigate back to [ElephantSQL](https://www.elephantsql.com/), select **Browser** from the options on the left, click **Table Queries**, select **auth_user** and click the blue **Execute** button. You should see your username and email along with a hashed password.
+9. Run ```python3 manage.py createsuperuser``` to create a superuser for your database. You will see a prompt in the terminal to enter a Username followed by Email and then Password.
 
-10. Paste the below if else statement in the Databases section of **settings.py** to use the development database when in development mode and the external database for the live website.
+10. To check that your superuser was created successfully navigate back to [ElephantSQL](https://www.elephantsql.com/), select **Browser** from the options on the left, click **Table Queries**, select **auth_user** and click the blue **Execute** button. You should see your username and email along with a hashed password.
+
+11. Paste the below if else statement in the Databases section of **settings.py** to use the development database when in development mode and the external database for the live website.
     ```
     if 'DATABASE_URL' in os.environ:
     DATABASES = {
@@ -302,41 +305,41 @@ else:
     }
     ```
 
-11. We'll use Gunicorn to act as our webserver. Paste the following into the terminal to install.
+12. We'll use Gunicorn to act as our webserver. Paste the following into the terminal to install.
    
     ```pip3 install gunicorn```
 
-12. Add Gunicorn to requirements.txt with ```pip freeze > requirements.txt```
+13. Add Gunicorn to requirements.txt with ```pip freeze > requirements.txt```
 
-13. Create a ```Procfile```, this needs to be in the root directory and add the following and change "enter-project-name-from-wsgi":
+14. Create a ```Procfile```, this needs to be in the root directory and add the following and change "enter-project-name-from-wsgi":
 
     ```web: gunicorn enter-project-name-from-wsgi.wsgi:application```
 
-14. Open a new terminal window and run the ```heroku login``` command. If Heroku is installed the message "Press any key to open up the browser to login or q to exit:" will display. Press any key.
+15. Open a new terminal window and run the ```heroku login``` command. If Heroku is installed the message "Press any key to open up the browser to login or q to exit:" will display. Press any key.
 
-15. A new window will open with a big purple **Log In** button, click the button and a message will display "Logged In". You can return to gitpod and the terminal will display the user that you're logged in under.
+16. A new window will open with a big purple **Log In** button, click the button and a message will display "Logged In". You can return to gitpod and the terminal will display the user that you're logged in under.
 
-16. Run the following to tell Heroku not to collect our Static Files:
+17. Run the following to tell Heroku not to collect our Static Files:
 
     ```heroku config:set DISABLE_COLLECTSTATIC=1 --app heroku-app-name-here```
 
-17. Add your Heroku live site URL to the ALLOWED HOSTS section of settings.py. Note don't include https:// or a trailing slash at the end.
+18. Add your Heroku live site URL to the ALLOWED HOSTS section of settings.py. Note don't include https:// or a trailing slash at the end.
 
     ```ALLOWED_HOSTS = ['{your deployed site URL}', 'localhost' ]```
 
-18. Commit and push all changes to GitHub.
+19. Commit and push all changes to GitHub.
 
-19. Enter the following in the terminal to initialize the Heroku git remote:
+20. Enter the following in the terminal to initialize the Heroku git remote:
 
     ```heroku git:remote -a {app name here}```
 
-20. Enter ```git push heroku main``` to push to Heroku, head to Heroku and click **Open App**. Your app should load without static files.
+21. Enter ```git push heroku main``` to push to Heroku, head to Heroku and click **Open App**. Your app should load without static files.
 
-21. Link Heroku to your GitHub respository by heading to the **Deploy** tab, click the GitHub logo under **Deployment Method**, search for your repository name under **App connected to GitHub**.
+22. Link Heroku to your GitHub respository by heading to the **Deploy** tab, click the GitHub logo under **Deployment Method**, search for your repository name under **App connected to GitHub**.
 
-22. When your repository is linked there will be an option below to set up automatic deploys from your selected branch. Note: It's considered best practice to deploy from your main branch.
+23. When your repository is linked there will be an option below to set up automatic deploys from your selected branch. Note: It's considered best practice to deploy from your main branch.
 
-23. If you opt for manual deploys you will need to head to the manual deploy and click **Deploy Branch** each time you push new commits to GitHub.
+24. If you opt for manual deploys you will need to head to the manual deploy and click **Deploy Branch** each time you push new commits to GitHub.
 
 ## Setting a new Secret Key
 1. We need to change the auto generated secret key by heading to [Djecrety](https://djecrety.ir/). This is a random key generator. 
@@ -390,7 +393,24 @@ else:
         }
     ]
     ```
-10. There are no changes to be made to the **Bucket Policy**
+10. Add the following for **Bucket Policy**:
+    ```
+        {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::your-bucket-name",
+                "arn:aws:s3:::your-bucket-name/*"
+            ]
+        }
+    ]
+}
+    ```
 
 11. In the **Access Control List** section click **Edit** and enable **List** for **Everyone(public access**). Be sure to check the "I understand the effects of these changes on my objects and buckets" box before clicking **Save**.
 
