@@ -308,9 +308,9 @@ else:
 
 12. Add Gunicorn to requirements.txt with ```pip freeze > requirements.txt```
 
-13. Create a ```Procfile```, this needs to be in the root directory and add the following:
+13. Create a ```Procfile```, this needs to be in the root directory and add the following and change "enter-project-name-from-wsgi":
 
-    ```web: gunicorn bookmark-it.wsgi:application```
+    ```web: gunicorn enter-project-name-from-wsgi.wsgi:application```
 
 14. Open a new terminal window and run the ```heroku login``` command. If Heroku is installed the message "Press any key to open up the browser to login or q to exit:" will display. Press any key.
 
@@ -320,7 +320,7 @@ else:
 
     ```heroku config:set DISABLE_COLLECTSTATIC=1 --app heroku-app-name-here```
 
-17. Add your Heroku live site URL to the ALLOWED HOSTS section of settings.py
+17. Add your Heroku live site URL to the ALLOWED HOSTS section of settings.py. Note don't include https:// or a trailing slash at the end.
 
     ```ALLOWED_HOSTS = ['{your deployed site URL}', 'localhost' ]```
 
@@ -330,7 +330,171 @@ else:
 
     ```heroku git:remote -a {app name here}```
 
-20. Enter ```git push heroku main``` to push to Heroku.
+20. Enter ```git push heroku main``` to push to Heroku, head to Heroku and click **Open App**. Your app should load without static files.
+
+21. Link Heroku to your GitHub respository by heading to the **Deploy** tab, click the GitHub logo under **Deployment Method**, search for your repository name under **App connected to GitHub**.
+
+22. When your repository is linked there will be an option below to set up automatic deploys from your selected branch. Note: It's considered best practice to deploy from your main branch.
+
+23. If you opt for manual deploys you will need to head to the manual deploy and click **Deploy Branch** each time you push new commits to GitHub.
+
+## Setting a new Secret Key
+1. We need to change the auto generated secret key by heading to [Djecrety](https://djecrety.ir/). This is a random key generator. 
+
+2. Copy the new key you generated, head to Heroku **Settings** tab and click **Reaveal Config Vars**
+
+3. Add ```SECRET_KEY``` in the **Key** box and paste your new secret key in the **Value** box.
+
+4. Open settings.py and amend the SECRET_KEY variable to the following:
+
+     ```SECRET_KEY = os.environ.get('SECRET_KEY', ' ')  ```
+
+5. Change the **DEBUG = True** variable to ```DEBUG = 'DEVELOPMENT' in os.environ```
+
+6. Commit and push changes.
+
+## Amazon Web Services (AWS) Setup
+
+1. Navigate to [AWS](https://aws.amazon.com/console/), click **Sign In to the Console** in the top right corner. If you already have an account, sign in or click **Create a new AWS account**.
+
+2. Using the search bar search for "S3" and click the first option "S3 - scalable storage in the cloud".
+
+3. Click the yellow **Create Bucket** button, choose the Region closest to you and select a name for your bucket (preferably the same as your project). 
+
+4. Select **ACLs enabled** and **Bucket Owner Preferred** under **Object Ownership**
+
+5. Uncheck the **Block Public Access** box and check the following statement:
+    "I acknowledge that the current settings might result in this bucket and the objects within becoming public."
+
+6. Click the yellow **Create Bucket** button.
+
+7. Click your bucket and navigate to the **Properties** tab, scroll to the bottom to **Static Web Hosting**. It will be Disabled by default, change it to Enabled.
+
+8. Select **Host Static website**, enter index.html and error.html for Index document and Error document and click **Save Changes**.
+
+9. Head to the **Permissions** tab, scroll down to **Cross-origin resource sharing (CORS)** section and paste the following
+    ```
+    [
+        {
+        "AllowedHeaders": [
+            "Authorization"
+        ],
+        "AllowedMethods": [
+            "GET"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [
+        ]
+        }
+    ]
+    ```
+10. There are no changes to be made to the **Bucket Policy**
+
+11. In the **Access Control List** section click **Edit** and enable **List** for **Everyone(public access**). Be sure to check the "I understand the effects of these changes on my objects and buckets" box before clicking **Save**.
+
+12. Now search **IAM** in the search bar and select the first option.
+
+13. Click **User Groups** on the left and click **Create Group**. Choose a name for your group, I chose manage-bookmark-it.
+Click **Create Group**
+
+14. Select the **Policies** section from the left hand menu and click **Create Policy**. Click the **JSON** tab, click **Actions** dropdown and select **Import Policy**. Enter **S3** in the search bar and select **AmazonS3FullAccess**, click **Import Policy**.
+
+15. Open a new tab also with **AWS** and navigate to the **S3** service. Select your bucket and click **Properties**. Here you will find the **Amazon Resource Name (ARN)** which you need to copy.
+
+16. Go back to your tab with **IAM** open on the Create Policy page. In the **Policy Editor** paste your **ARN** in the resources key. Paste your key twice and add /* to the second one. Add **"s3:*"** to the action key and click **Next**.
+
+17. Enter a Policy name and description and click **Create Policy**. You will be taken back to the policies page and should see a green banner at the top confirming your new policy has been created.
+
+18. Head to **User Groups** on the left hand menu, click your group, click **Permissions**, click the **Add Permissions**  dropdown and click **Attach Policies**.
+
+19. Search for the name of your policy, select it and click **Attach Policies**
+
+20. Select **Users** from the left hand menu, click **Create User**. Follow this convention for the user name 
+
+    ```your-app-name-staticfiles-user```
+
+21. Click **Next**. On the Set Permissions page select your policy to add a user then click **Next**. Nothing else needs changing so click **Create User**.
+
+22. Click **Users** and select the user you just created and select the **Security Credentials** tab. Scroll down to access keys and click **Create Access Key**. Select **Other** from the list of options and click **Next**. On the next page click **Create Access Key** and then click **Download .csv file** and click **Done**.
+
+## Connecting Django to S3
+
+1. Install the following packages in the terminal
+
+    ```
+    pip3 install boto3
+    pip3 install django-storages
+    ```
+2. Updates requirements.txt ```pip freeze > requirements.txt```
+
+3. In **settings.py** **INSTALLED APPS** add storages.
+
+4. Add the following in **settings.py** 
+
+    ```
+    if 'USE_AWS' in os.environ:
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'your-bucket-name-here'
+    AWS_S3_REGION_NAME = 'your-region-here'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    ```
+
+5. Head to Heroku, **settings** and under **Reveal Config Vars** add the following:
+    - AWS_ACCESS_KEY_ID - Enter your access key id from the .csv file you downloaded
+    - AWS_SECRET_ACCESS_KEY  - Enter your secret access key from the .csv file you downloaded
+    - USE_AWS - True
+
+6. You can delete the DISABLE_COLLECTSTATIC variable.
+
+7. In your root directory create a file called **custom_storages.py** and add the following to give the app a location to store static and media files:
+
+    ```
+    from django.conf import settings
+    from storages.backends.s3boto3 import S3Boto3Storage
+
+
+    class StaticStorage(S3Boto3Storage):
+        location = settings.STATICFILES_LOCATION
+
+
+    class MediaStorage(S3Boto3Storage):
+        location = settings.MEDIAFILES_LOCATION
+    ```
+
+8. In **settings.py** add the following under the bucket config if statement to tell the app where to store STATIC and MEDIA files and to override the URLs if in production.
+
+    ```
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+    ```
+
+9. Commit and push all changes. If you selected automatic deploys these changes will automatically synch with Heroku. If not, head to the **Deploy** tab in Heroku and navigate down to manual deployment and click **Deploy Branch**.
+
+10. Head to the **Overview** tab in Heroku, under **Latest Activity** click the **view build log** link. Here you should see if your static files were copied.
+
+11. Head to your S3 bucket in **AWS**, refresh and you should see the static folder. Click **Create Folder**, call the folder **media** and click **Create Folder**.
+
+12. Click the new **media** folder, click **Upload**, click **Add Files** and select your product images.
+
+13. Scroll down to **Permissions** click on it and select "Grant public-read access" and accept the warning. Click **Upload**
+
+14. 
+
+
+
+
+
 # Future Features
 
 # Known Bugs
