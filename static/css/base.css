@@ -83,6 +83,48 @@ a {
   --bs-btn-active-shadow: none;
 }
 
+/*NAVBAR*/
+nav {
+  background-color: #198A98;
+}
+
+.navbar-brand-bg {
+  background-color: #CC0069;
+  padding: 0.5rem;
+  border: 3px solid #01466c;
+  border-radius: 5px;
+}
+
+.navbar-brand#bmi-brand {
+  color: #EEF7FB;
+  font-family: 'Saira Stencil One', sans-serif;
+  font-size: 2rem;
+
+  /*Hover effect @ CSS Tricks - see readme*/
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: linear-gradient(to right, #64BBE4, #64BBE4 50%, #EEF7FB 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200%;
+  background-position: 100%;
+  transition: background-position 500ms ease;
+}
+
+.navbar-brand#bmi-brand:hover {
+  background-position: 0 100%;
+}
+
+.nav-link-lg {
+  color: #EEF7FB;
+  font-weight: 600;
+}
+
+.nav-icon {
+  color:#EEF7FB;
+}
 /*MEDIA QUERIES*/
 @media only screen and (min-width: 768px) {
   .overlay {

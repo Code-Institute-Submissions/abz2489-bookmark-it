@@ -1,14 +1,14 @@
 .icon {
     font-size: 1.5rem;
-    color: #CC0069;
 }
 
-.edit-icon, .bookmark {
+.edit-icon {
     color: #198A98;
 }
 
 .arrow-icon {
     font-size: 2rem;
+    color: #CC0069;
 }
 
 .bi .bi-arrow-up-square .icon {
