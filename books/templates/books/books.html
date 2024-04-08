@@ -4,7 +4,7 @@
 {% block extra_title %}Books{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'books/css/books.css' %}">
+    <link rel="stylesheet" href="{% static 'books/css/books.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -47,7 +47,7 @@
                 <div class="row">
                     {% for book in books %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card h-100 border-0">
+                            <div class="card h-100 card-border">
                                 {% if book.cover %}
                                 <a href="{% url 'book_summary' book.id %}">
                                     <img class="cover-img-sml card-img-top img-fluid" src="{{ book.cover.url }}" alt="{{ book.title }}">
@@ -58,12 +58,12 @@
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
-                                    <p class="mb-0 badge rounded-pill">{{ book.category.friendly_name}}</p>
+                                    <p class="category-badge mb-0 badge rounded-pill">{{ book.category.friendly_name}}</p>
                                 </div>
                                 <div class="card-body pb-0">
                                     <a href="{% url 'book_summary' book.id %}">
-                                        <p class="books-title mb-0">{{ book.title}}</p>
-                                        <p class="books-author mb-0">{{ book.author}}</p>
+                                        <p class="book-title mb-1">{{ book.title}}</p>
+                                        <p class="author mb-0 text-small">{{ book.author}}</p>
                                     </a>
                                 </div>
                                 <div class="card-body pb-0">
@@ -72,7 +72,7 @@
                                 <div class="card-footer pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="books-price mb-0 text-left font-weight-bold">£{{ book.price }}</p>
+                                            <p class="book-price mb-0 text-left font-weight-bold">£{{ book.price }}</p>
                                         </div>
                                     </div>
                                 </div>

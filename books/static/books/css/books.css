@@ -1,5 +1,19 @@
 .bi-arrow-up-square, .bi-arrow-up-square-fill {
     font-size: 2rem;
+    color: #CC0069;
+}
+
+.card-border {
+    border: 2px solid #CC0069;
+}
+
+.card-border:hover {
+    border: 4px solid #CC0069;
+}
+
+.cover-img-sml {
+    height: 300px;
+    width: 225px;
 }
 
 .cover-img-med {
@@ -9,4 +23,23 @@
 
 p.badge.rounded-pill {
     background-color: #198A98;
+}
+
+.book-title, .author {
+    color: black;
+    text-decoration: None;
+}
+
+.book-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.book-price {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.card, .card-footer {
+    background-color: #EEF7FB;
 }

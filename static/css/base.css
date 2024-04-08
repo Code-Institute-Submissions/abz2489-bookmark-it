@@ -45,14 +45,22 @@ input, button, textarea, select {
 
 hr {
   width: 75%;
+  height: 1.75px;
   margin: auto;
+  background-color: #cc0069;
+  opacity: 80%;
+
+}
+
+a {
+  text-decoration: none;
 }
 
 .overlay {
   width: 95%;
   margin: auto;
   margin-top: 3rem;
-  background-color: #EEF7FB; /*to be copied*/
+  background-color: #EEF7FB;
 }
 
 .message-container {
@@ -76,3 +84,8 @@ hr {
 }
 
 /*MEDIA QUERIES*/
+@media only screen and (min-width: 768px) {
+  .overlay {
+    width: 75%;
+  }
+}
