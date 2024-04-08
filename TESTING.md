@@ -60,3 +60,14 @@ Fixed with the help of slack. I had entered the book_id arguement for the form U
 13. Import error when trying to run the server due to a circular import. I accidentally imported ```from .webhooks import webhook``` in both webhook_handler.py and webhooks.py. Fixed by removing the import from webhook_handler.py.
 
 <img src="documentation/bugs/bmi-bug13.png" width="500" height="50"/>
+
+14. Media files not loading in the deployed version of Bookmark-It. I had to reach out to tutor support for this one and the fixes are listen below.
+    - I had MEDIA_URL on my img src attribute, which is no longer needed due to being overidden in settings.py.
+    - I failed to load my fixtures after the first migration to my new DB.
+        - We reset my Elephant SQL database.
+        - Ran the migrations again.
+        - Loaded the categories fixture without issues.
+        - Hit a problem with the books fixture. My books model needed big integer for the ISBN number.
+        - This allowed us to load the books fixture without issue.
+
+15. Static files not loading in deployed version of Bookmark-It. Chrome Dev tools showed that the files were unauthorised which suggested an issue with my AWS setup. I suspected the issue was the setting I chose for my access key but the problem persisted after changing. I then found some incorrect settings in the Bucket Policy which fixed the problem.
