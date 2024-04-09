@@ -16,9 +16,14 @@
   color: #aab7c4;
 }
 
+.order-table {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
 /*MEDIA QUERIES*/
 @media only screen and (min-width: 768px) {
-  .profile-form {
+  .form-control {
     width: 50%;
   }
 }
