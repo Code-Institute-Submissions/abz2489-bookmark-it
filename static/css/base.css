@@ -13,6 +13,7 @@ html, body {
 
 body {
     font-size: 16px;
+    background-color: #01466c;
   }
 
 body, h1, h2, h3, h4, h5, h6, p, ul {
@@ -125,9 +126,19 @@ nav {
 .nav-icon {
   color:#EEF7FB;
 }
+
+/*ALLAUTH*/
+.allauth-container {
+  width: 90%;
+}
+
 /*MEDIA QUERIES*/
 @media only screen and (min-width: 768px) {
   .overlay {
     width: 75%;
+  }
+
+  .allauth-container {
+    width: 50%;
   }
 }
