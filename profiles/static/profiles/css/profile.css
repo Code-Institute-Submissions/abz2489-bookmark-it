@@ -1,3 +1,23 @@
 .order-table {
     width: 90%;
   }
+
+.profile-form {
+  width: 100%;
+}
+
+#id_default_country,
+#id_default_country option:not(:first-child) {
+    color: #000;
+}
+
+#id_default_country option:first-child {
+  color: #aab7c4;
+}
+
+/*MEDIA QUERIES*/
+@media only screen and (min-width: 768px) {
+  .profile-form {
+    width: 50%;
+  }
+}
