@@ -196,8 +196,16 @@ I was missing lineitem_total on the OrderLineItem model and added this in.
 
 ### Profile
 **Mobile**
+
+<img src="documentation/wireframes/bmi-profile-m.png" height="750" width="300"/>
+
 **Tablet**
+
+<img src="documentation/wireframes/bmi-profile-t.png" height="750" width="350"/>
+
 **Desktop**
+
+<img src="documentation/wireframes/bmi-profile-d.png" height="750" width="500"/>
 
 ### Book Admin
 **Mobile**
@@ -509,7 +517,6 @@ Click **Create Group**
 
 13. Scroll down to **Permissions** click on it and select "Grant public-read access" and accept the warning. Click **Upload**
 
-14. 
 
 
 
