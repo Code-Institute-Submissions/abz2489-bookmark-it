@@ -43,6 +43,10 @@ for a {{ site_name }} account and log in below:{% endblocktrans %}</p>
   {% if redirect_field_value %}
   <input class="form-control" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
+
+  <p class="ms-2 mb-2">Forgot your password?
+    <a href="{% url 'account_reset_password' %}" class="text-black"><strong>Reset here</strong></a></p>
+
   <button class="btn btn-secondary mb-2">
     <a href="{% url 'books' %}" class="text-dec-none text-light">View Books</a>
   </button>
