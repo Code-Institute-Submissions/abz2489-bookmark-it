@@ -71,3 +71,5 @@ Fixed with the help of slack. I had entered the book_id arguement for the form U
         - This allowed us to load the books fixture without issue.
 
 15. Static files not loading in deployed version of Bookmark-It. Chrome Dev tools showed that the files were unauthorised which suggested an issue with my AWS setup. I suspected the issue was the setting I chose for my access key but the problem persisted after changing. I then found some incorrect settings in the Bucket Policy which fixed the problem.
+
+16. Not so much a bug but please note commit fd6b895a6c9ed783c43adb092e5503520356f3b1 revert "Add error pages". I had accidentally used ```git reset --hard``` after the previous commit, f3826f2318a0fa2425caf8a5f6d5c9ccd404dd7a was made which lost my error pages. I decided to revert this commit as the commit message was no longer correct.
