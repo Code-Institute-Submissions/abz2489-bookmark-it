@@ -1,0 +1,24 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block extra_title %} - 403 Error{% endblock %}
+
+{% block content %}
+    <div class="col text-center mt-3">
+        <h1>{% trans "ERROR 403" %}</h1>
+    </div>
+    <hr class="mt-1 mb-2">
+    </div>
+
+    <div class="container error-container">
+        <h3 class="mb-3">Oops! Looks like our bookworms are having a tea break.</h3>
+
+        <p class="mb-3">Give us a moment to fetch the right page for you. In the meantime,
+            why not grab a book and enjoy some literary adventure?
+        </p>
+        <button class="btn btn-secondary mb-2">
+            <a href="{% url 'books' %}" class="text-dec-none text-light">Back to Books</a>
+        </button>
+    </div>
+    
+{% endblock %}
