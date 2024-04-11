@@ -49,7 +49,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 card-border">
                                 {% if book.cover %}
-                                <a href="{% url 'book_summary' book.id %}">
+                                <a href="{% url 'book_summary' book.id %}" class="d-flex justify-content-center">
                                     <img class="cover-img-sml card-img-top img-fluid" src="{{ book.cover.url }}" alt="{{ book.title }}">
                                 </a>
                                 {% else %}
