@@ -50,7 +50,7 @@
                             <div class="card h-100 card-border">
                                 {% if book.cover %}
                                 <a href="{% url 'book_summary' book.id %}" class="d-flex justify-content-center">
-                                    <img class="cover-img-sml card-img-top img-fluid" src="{{ book.cover.url }}" alt="{{ book.title }}">
+                                    <img class="cover-img-sml card-img-top img-fluid" src="{{ book.cover.url }}" alt="Image of{{ book.title }} cover">
                                 </a>
                                 {% else %}
                                 <a href="{% url 'book_summary' book.id %}">
