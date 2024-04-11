@@ -99,9 +99,16 @@ I amended the table names to reflect as they would in my models.
 
 I was missing lineitem_total on the OrderLineItem model and added this in.
 
+Third draft:
+
+![Bookmark-It Relational Database](documentation/features/bmi-db3.png)
+
+Due to time constraints I had to remove the book reviews. There are some additional fields added to books which I felt were necessary for the book summary page. 
 
 ## Skeleton
 ### Wireframes
+
+Since completing the wireframes I decided not to add a footer to the website as it didn't add anything to the user experience.
 
 ### Books
 **Mobile**
@@ -197,20 +204,28 @@ I was missing lineitem_total on the OrderLineItem model and added this in.
 ### Profile
 **Mobile**
 
-<img src="documentation/wireframes/bmi-profile-m.png" height="750" width="300"/>
+<img src="documentation/wireframes/bmi-profile-m.png" height="600" width="300"/>
 
 **Tablet**
 
-<img src="documentation/wireframes/bmi-profile-t.png" height="750" width="350"/>
+<img src="documentation/wireframes/bmi-profile-t.png" height="600" width="350"/>
 
 **Desktop**
 
-<img src="documentation/wireframes/bmi-profile-d.png" height="750" width="500"/>
+<img src="documentation/wireframes/bmi-profile-d.png" height="600" width="500"/>
 
 ### Book Admin
 **Mobile**
+
+<img src="documentation/wireframes/bmi-book-admin-m.png" height="600" width="300"/>
+
 **Tablet**
+
+<img src="documentation/wireframes/bmi-book-admin-t.png" height="600" width="350"/>
+
 **Desktop**
+
+<img src="documentation/wireframes/bmi-book-admin-d.png" height="600" width="500"/>
 
 ## Surface
 
@@ -518,13 +533,12 @@ Click **Create Group**
 13. Scroll down to **Permissions** click on it and select "Grant public-read access" and accept the warning. Click **Upload**
 
 
-
-
-
-
 # Future Features
 
 # Known Bugs
+- Confirmation emails for purchases not sending but account verification and password reset emails are.
+
+- After hitting major setbacks with emails and deployment sadly this is currently in an unfinished state.
 
 # Citation
 
@@ -535,12 +549,11 @@ Click **Create Group**
 - Niall Maher's codu article on CSS Reset.
 [A Simple and Minimal CSS Reset](https://www.codu.co/articles/a-simple-and-minimal-css-reset-xc7ypizf)
 
+- Katherine Kato's CSS Tricks article on amimations.
+[4 Ways to Animate the Color of a Text Link on Hover](https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/)
+
 - W3Schools JS matchmedia.
 [JS Matchmedia](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_matchmedia)
 
 - Code Institute Boutique Ado walkthrough & AJ Greaves commit record for bug fix.
 [AJ Greaves commit record ](https://github.com/Code-Institute-Solutions/boutique_ado_v1/commit/de7ad2067ac1b5de37a4cd8b9f4ddf572a4bf6c7)
-
-## Images
-
-## Text
