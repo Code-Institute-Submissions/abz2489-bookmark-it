@@ -35,7 +35,7 @@
                             {% for item in basket_items %}
                                 <tr>
                                     <td class="p-3 w-25">
-                                        <img class="cover-img-xsml hide-sm" src="{{ item.book.cover }}">
+                                        <img class="cover-img-xsml hide-sm" src="{{ item.book.cover.url }}">
                                         <p class="my-0"><strong>{{ item.book.title }}</strong></p>
                                         <p class="my-0 small text-muted">ISBN: {{ item.book.isbn }}</p>
                                     </td>
