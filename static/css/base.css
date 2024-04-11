@@ -72,6 +72,10 @@ a {
   cursor: pointer;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .btn-primary {
   background-color: #CC0069;
   border: none;
