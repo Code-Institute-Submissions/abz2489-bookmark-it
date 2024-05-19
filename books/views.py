@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Category, Book
+from .forms import BookForm
 
 
 def all_books(request):
@@ -50,7 +51,7 @@ def all_books(request):
             queries = Q(title__icontains=query) | Q(author__icontains=query) | Q(summary__icontains=query) | Q(category__name__icontains=query)
             books = books.filter(queries)
 
-    current_sorting = f'{sort}_{direction}'
+    current_sorting = f"{sort}_{direction}"
 
     context = {
         "books": books,
@@ -70,3 +71,15 @@ def book_summary(request, book_id):
         "book": book,
     }
     return render(request, "books/book_summary.html", context)
+
+
+def add_book(request):
+    """Add a new book to the book shop"""
+    form = BookForm()
+    template = "books/add_book.html"
+    context = {
+        "form": form,   
+    }
+
+    return render(request, template, context)
+
