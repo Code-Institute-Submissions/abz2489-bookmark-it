@@ -53,11 +53,11 @@
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
                     <li class="nav-item mb-1">
-                        <a href="" class="nav-link d-block d-lg-none ps-2">Book Admin</a>
+                        <a href="{% url 'add_book' %}" class="nav-link d-block d-lg-none ps-2">Book Admin</a>
                     </li>
                 {% endif %}
                 <li class="nav-item mb-1">
-                    <a href="#" class="nav-link d-block d-lg-none ps-2">My Profile</a>
+                    <a href="{% url 'profile' %}" class="nav-link d-block d-lg-none ps-2">My Profile</a>
                 </li>
                 <li class="nav-item mb-1">
                     <a href="{% url 'account_logout' %}" class="nav-link d-block d-lg-none ps-2">Logout</a>
