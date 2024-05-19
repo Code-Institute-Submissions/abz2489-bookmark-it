@@ -24,7 +24,7 @@
                                 <img class="cover-img-med img-fluid" src="{{ book.cover.url }}" alt="{{ book.title }}">
                             </a>
                             {% else %}
-                                    <img class="card-img-top img-fluid" src="no-image.png" alt="{{ book.title }}">
+                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ book.title }}">
                         {% endif %}
                     </div>
                 </div>
