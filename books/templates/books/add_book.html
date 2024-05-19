@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="overlay profile-overlay">
+        <div class="col text-center mt-5">
+            <h1 class="mt-5 pt-3">Manage Books</h1>
+            <hr class="mt-1 mb-4">
+        </div>
+
+        <!--ADD BOOK-->
+        <div class="col-12 text-center">
+            <h4 class="mb-4">Add Book</h4>
+        </div>
+
+        <form action="{% url 'add_book' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="container d-flex justify-content-center">
+                <a class="btn btn-secondary mb-2 me-4" href="{% url 'books' %}">Cancel</a>
+                <button class="btn btn-primary mb-2" type="submit">Upload</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'js/base.js' %}"></script>
+{% endblock %}
