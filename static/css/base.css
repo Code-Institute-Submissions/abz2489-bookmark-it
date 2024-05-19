@@ -39,6 +39,7 @@ input, button, textarea, select {
 /*GLOBAL STYLES*/
 .form-control {
   border: 1px solid #198a98;
+  margin: auto;
 }
 
 .bi {
@@ -163,6 +164,10 @@ nav {
   }
 
   .allauth-container {
+    width: 50%;
+  }
+
+  .form-control {
     width: 50%;
   }
 }
