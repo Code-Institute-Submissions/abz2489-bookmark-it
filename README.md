@@ -557,3 +557,6 @@ Click **Create Group**
 
 - Code Institute Boutique Ado walkthrough & AJ Greaves commit record for bug fix.
 [AJ Greaves commit record ](https://github.com/Code-Institute-Solutions/boutique_ado_v1/commit/de7ad2067ac1b5de37a4cd8b9f4ddf572a4bf6c7)
+
+- BugBytes' Django Crispy Forms video to assign the date picker to the published field of the add book form.
+[Building Django forms with django-crispy-forms](https://www.youtube.com/watch?v=MZwKoi0wu2Q&t=358s)
