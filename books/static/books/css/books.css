@@ -57,7 +57,7 @@ p.badge.rounded-pill {
 }
 
 /*ADD BOOK FORM*/
-div#div_id_cover {
+div#div_id_cover, .invalid-feedback {
     margin: auto;
     width: 50%;
     margin-top: 1rem;
@@ -81,4 +81,8 @@ input::file-selector-button {
     color: #fff;
     border-color: #6c757d;
     border-radius: 0.375rem;
-  }
+}
+
+label {
+    font-weight: bold;
+}
