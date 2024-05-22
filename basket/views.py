@@ -7,11 +7,11 @@ from books.models import Book
 
 def view_basket(request):
     """A view that renders basket items page"""
-
     return render(request, "basket/basket.html")
 
 
 def add_to_basket(request, book_id):
+    
     """Add book quantity to basket"""
 
     book = get_object_or_404(Book, id=book_id)

@@ -75,14 +75,14 @@ def book_summary(request, book_id):
 
 def add_book(request):
     """Add a new book to the book shop"""
-    if request.method == 'POST':
+    if request.method == "POST":
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'You successfully added a new book!')
-            return redirect(reverse('add_book'))
+            messages.success(request, "You successfully added a new book!")
+            return redirect(reverse("add_book"))
         else:
-            messages.error(request, 'Unable to upload book. Double check the form and try again.')
+            messages.error(request, "Unable to upload book. Double check the form and try again.")
     else:
         form = BookForm()
     template = "books/add_book.html"
@@ -92,3 +92,25 @@ def add_book(request):
 
     return render(request, template, context)
 
+def edit_book(request, book_id):
+    """Edit and existing book"""
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == "POST":
+        form = BookForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f"Changes made to book.title")
+            return redirect(reverse("book_summary", args=[book.id]))
+        else: 
+            messages.error(request, "Failed to update the book. Double check the form and try again.")
+    else:
+        form = BookForm(instance=book)
+        messages.info(request, f"Editing {book.title}")
+
+    template = "books/edit_book.html"
+    context = {
+        "form": form,
+        "book": book, 
+    }
+
+    return render(request, template, context)
