@@ -17,7 +17,7 @@ class Category(models.Model):
 class Book(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=254)
-    summary = models.TextField(max_length=500)
+    summary = models.TextField(max_length=1000)
     author = models.CharField(max_length=254)
     isbn = models.BigIntegerField(unique=True)
     price = models.DecimalField(max_digits=5, decimal_places=2)
