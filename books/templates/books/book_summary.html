@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <div class="row d-flex align-items-center justify-content-center mb-4">
                 <div class="col-10 col-md-5 col-lg-4 mb-2">
-                    <div class="image-container">
+                    <div class="image-container mb-2">
                         {% if book.cover %}
                             <a href="{{ book.cover.url }}" target="_blank">
                                 <img class="cover-img-med img-fluid" src="{{ book.cover.url }}" alt="{{ book.title }}">
@@ -27,6 +27,18 @@
                             <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ book.title }}">
                         {% endif %}
                     </div>
+                    {% if request.user.is_superuser %}
+                        <div class="col d-flex justify-content-center">
+                             <a href="{% url 'delete_book' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip" data-bs-title="Delete">
+                                <i class="bi bi-trash edit-icon me-5"></i>
+                            </a>
+                            <a href="{% url 'edit_book' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip" data-bs-title="Edit">
+                                <i class="bi bi-pencil edit-icon ms-4 me-5"></i>
+                            </a>
+                        </div>
+                    {% endif %}
                 </div>
                 
                 <!--BOOK MAIN INFO-->
