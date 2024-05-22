@@ -76,7 +76,7 @@
                                         </div>
                                         {% if request.user.is_superuser %}
                                             <div class="col d-flex justify-content-end">
-                                                <a href="" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                <a href="{% url 'delete_book' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                 data-bs-custom-class="custom-tooltip" data-bs-title="Delete">
                                                     <i class="bi bi-trash edit-icon"></i>
                                                 </a>
