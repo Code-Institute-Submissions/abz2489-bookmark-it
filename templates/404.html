@@ -1,5 +1,6 @@
 {% extends "base.html" %} 
 {% load static %}
+{% load i18n %}
 
 {% block extra_title %} - 404 Error{% endblock %}
 
@@ -8,7 +9,6 @@
         <h1>{% trans "ERROR 404" %}</h1>
     </div>
     <hr class="mt-1 mb-2">
-    </div>
 
     <div class="container error-container">
         <h3 class="mb-3">Oops!</h3>
@@ -16,9 +16,6 @@
         <p class="mb-3">Page not found. Looks like this book has wandered off our shelves.
             Let's help you find another captivating read.
         </p>
-        <button class="btn btn-secondary mb-2">
-            <a href="{% url 'books' %}" class="text-dec-none text-light">Back to Books</a>
-        </button>
-    </div>
-    
+        <a href="{% url 'books' %}" class="btn btn-secondary text-dec-none text-light mb-2">Back to Books</a>
+    </div>  
 {% endblock %}

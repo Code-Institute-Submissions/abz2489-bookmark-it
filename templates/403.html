@@ -1,5 +1,6 @@
 {% extends "base.html" %} 
 {% load static %}
+{% load i18n %}
 
 {% block extra_title %} - 403 Error{% endblock %}
 
@@ -8,7 +9,6 @@
         <h1>{% trans "ERROR 403" %}</h1>
     </div>
     <hr class="mt-1 mb-2">
-    </div>
 
     <div class="container error-container">
         <h3 class="mb-3">Access Denied! It seems you've stumbled into the forbidden section of our library.</h3>
@@ -16,9 +16,6 @@
         <p class="mb-3">Fear not, dear reader! While this door may be closed,
             there are countless other literary worlds waiting to be explored.
         </p>
-        <button class="btn btn-secondary mb-2">
-            <a href="{% url 'books' %}" class="text-dec-none text-light">Back to Books</a>
-        </button>
+        <a href="{% url 'books' %}" class="btn btn-secondary text-dec-none text-light mb-2">Back to Books</a>
     </div>
-    
 {% endblock %}
