@@ -31,8 +31,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', ' ')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
-    '8000-abz2489-bookmarkit-su6afnii4cv.ws-eu110.gitpod.io',
-    '8000-abz2489-bookmarkit-0pe3z8edyi0.ws-eu110.gitpod.io',
+    '8000-abz2489-bookmarkit-0pe3z8edyi0.ws-eu114.gitpod.io',
+    '8000-abz2489-bookmarkit-0pe3z8edyi0.ws-eu111.gitpod.io',
     'bookmark-it-cb2e546b9314.herokuapp.com'
     ]
 
