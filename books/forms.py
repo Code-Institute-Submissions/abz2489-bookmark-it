@@ -54,7 +54,7 @@ class BookForm(forms.ModelForm):
                 field.widget = forms.DateInput(attrs={"type": "date"})
             
     def clean_date_published(self):
-        date_published = self.cleaned_data.get('date_published')
+        date_published = self.cleaned_data.get("date_published")
         if date_published >= datetime.date.today():
             raise forms.ValidationError("The publication date must be in the past!")
-        return date_published  
+        return date_published

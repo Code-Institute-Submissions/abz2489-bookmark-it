@@ -1,8 +1,11 @@
 from unicodedata import category
+
 from django.shortcuts import render,get_object_or_404, redirect, reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
+
 from .models import Category, Book
 from .forms import BookForm
 
@@ -73,8 +76,13 @@ def book_summary(request, book_id):
     return render(request, "books/book_summary.html", context)
 
 
+@login_required
 def add_book(request):
     """Add a new book to the book shop"""
+    if not request.user.is_superuser:
+        messages.error(request, "Only store owners can access this page")
+        return redirect(reverse("books"))
+
     if request.method == "POST":
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
@@ -92,8 +100,14 @@ def add_book(request):
 
     return render(request, template, context)
 
+
+@login_required
 def edit_book(request, book_id):
     """Edit and existing book"""
+    if not request.user.is_superuser:
+        messages.error(request, "Only store owners can access this page")
+        return redirect(reverse("books"))
+
     book = get_object_or_404(Book, pk=book_id)
     if request.method == "POST":
         form = BookForm(request.POST, request.FILES, instance=book)
@@ -115,8 +129,13 @@ def edit_book(request, book_id):
 
     return render(request, template, context)
 
+
+@login_required
 def delete_book(request, book_id):
     """Delete a book from the store"""
+    if not request.user.is_superuser:
+        messages.error(request, "Only store owners can delete books")
+        return redirect(reverse("books"))
 
     book = get_object_or_404(Book, pk=book_id)
     book.delete()
