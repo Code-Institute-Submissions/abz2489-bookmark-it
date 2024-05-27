@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -27,6 +28,7 @@ class Book(models.Model):
     number_in_series = models.IntegerField(null=True, blank=True)
     date_published = models.DateField(null=True, blank=True)
     cover = models.ImageField(null=True, blank=True)
+    bookmarks = models.ManyToManyField(User, related_name='bookmarks', default=None, blank=True)
 
     def __str__(self):
         return self.title
