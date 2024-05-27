@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile
 from .forms import UserProfileForm
 
+from books.models import Book
 from checkout.models import Order
 
 
@@ -57,3 +58,17 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def bookmark_add(request, book_id):
+    """A view to bookmark selected books"""
+    book = get_object_or_404(Book, id=book_id)
+    
+    if book.bookmark.filter(id=request.user.id).exists():
+        messages.error(request, "This book has already been bookmarked")
+    else:
+        book.bookmark.add(request.user)
+        messages.success(request, "Bookmarked")
+    
+    return redirect(reverse('book_summary', kwargs={'book_id': book_id}))
