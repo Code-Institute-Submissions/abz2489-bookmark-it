@@ -214,6 +214,19 @@ Since completing the wireframes I decided not to add a footer to the website as 
 
 <img src="documentation/wireframes/bmi-profile-d.png" height="600" width="500"/>
 
+### Profile - bookmark
+**Mobile**
+
+<img src="documentation/wireframes/bmi-profile-bookmark-m.png" height="600" width="300"/>
+
+**Tablet**
+
+<img src="documentation/wireframes/bmi-profile-bookmark-t.png" height="600" width="350"/>
+
+**Desktop**
+
+<img src="documentation/wireframes/bmi-profile-bookmark-d.png" height="600" width="500"/>
+
 ### Book Admin
 **Mobile**
 
