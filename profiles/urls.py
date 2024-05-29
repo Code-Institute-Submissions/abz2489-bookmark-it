@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.profile, name='profile'),
     path('order_history/<order_number>', views.order_history, name='order_history'),
     path('bookmark_add/<int:book_id>/', views.bookmark_add, name='bookmark_add'),
+    path('user_bookmarks/', views.user_bookmarks, name='user_bookmarks'),
 ]

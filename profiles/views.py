@@ -65,10 +65,21 @@ def bookmark_add(request, book_id):
     """A view to bookmark selected books"""
     book = get_object_or_404(Book, id=book_id)
     
-    if book.bookmark.filter(id=request.user.id).exists():
+    if book.bookmarks.filter(id=request.user.id).exists():
         messages.error(request, "This book has already been bookmarked")
     else:
-        book.bookmark.add(request.user)
+        book.bookmarks.add(request.user)
         messages.success(request, "Bookmarked")
     
     return redirect(reverse('book_summary', kwargs={'book_id': book_id}))
+
+
+@login_required
+def user_bookmarks(request):
+    """A view to display user's bookmarked books"""
+    bookmarks = Book.objects.filter(bookmarks=request.user)
+    template = 'profiles/bookmarks.html'
+    context = {
+        'bookmarks': bookmarks,
+    }
+    return render(request, template, context)
