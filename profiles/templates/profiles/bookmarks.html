@@ -40,12 +40,13 @@
     </div>
 
     <!--BOOKS-->
+    {% if user_bookmarks %}
     <div class="container-fluid">
         <div class="row">
             <div class="book-container col-10 offset-1">
                 <div class="row mt-1 mb-2"></div>
                 <div class="row">
-                    {% for book in bookmarks %}
+                    {% for book in user_bookmarks %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 card-border">
                                 {% if book.cover %}
@@ -107,6 +108,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     
     <!--BACK TO TOP BUTTON-->
     <div class="mt-5">
