@@ -6,8 +6,11 @@ from django.dispatch import receiver
 
 from django_countries.fields import CountryField
 
+from books.models import Book
+
 
 class UserProfile(models.Model):
+    """User profile model"""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone_number = models.CharField(
         max_length=20,
@@ -51,3 +54,18 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance)
     # Existing users: just save the profile
     instance.userprofile.save()
+
+
+class Bookmark(models.Model):
+    """Bookmark model"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    class Meta:
+        """Bookmark model constraint to ensure unique users and books"""
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'book'], name='unique_user_book')
+        ]
+
+    def __str__(self):
+        return f"{self.user.username} - {self.book.title}"
