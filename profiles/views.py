@@ -65,8 +65,8 @@ def bookmark_add(request, book_id):
     """A view to bookmark selected books"""
     book = get_object_or_404(Book, id=book_id)
     Bookmark.objects.get_or_create(user=request.user, book=book)
-    messages.success(request, f"Successfully bookmarked {book.title}")
 
+    messages.success(request, f"Successfully bookmarked {book.title}")
     return redirect("book_summary", book_id=book_id)
 
 
@@ -81,3 +81,12 @@ def bookmark(request):
         "user_bookmarks": user_bookmarks
     }
     return render(request, template, context)
+
+
+@login_required
+def bookmark_remove(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    Bookmark.objects.filter(user=request.user, book=book).delete()
+    
+    messages.success(request, f"{book.title} removed from bookmarks")
+    return redirect("bookmark")
