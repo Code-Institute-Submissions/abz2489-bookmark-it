@@ -52,10 +52,19 @@
                         <p class="mb-0">Book <strong>{{book.number_in_series}}</strong> of <strong>{{ book.series }}</strong> series</p>
                     {% endif %}
                     <p class="book-price mb-3 text-left">£{{ book.price }}</p>
-                    <a href="{% url 'bookmark_add' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        data-bs-custom-class="custom-tooltip" data-bs-title="Add bookmark">
-                        <i class="bi bi-bookmark-plus"></i>
-                    </a>
+                    {% if request.user.is_authenticated %}
+                        {% if bookmarked %}
+                        <i class="bi bi-bookmark-fill icon bookmark-icon" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip" data-bs-title="Bookmarked">
+                        </i>
+                        <span>Bookmarked</span>
+                        {% else %}
+                            <a href="{% url 'bookmark_add' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="custom-tooltip" data-bs-title="Add bookmark">
+                                <i class="bi bi-bookmark-plus icon bookmark-icon"></i>
+                            </a>
+                        {% endif %}
+                    {% endif %}
 
                     <!--QUANTITY FORM-->
                     <form class="form" method="POST" action="{% url 'add_to_basket' book.id %}">

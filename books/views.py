@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Category, Book
+from profiles.models import Bookmark
 from .forms import BookForm
 
 
@@ -69,9 +70,11 @@ def book_summary(request, book_id):
     """This view displays an individual summary of a selected book"""
 
     book = get_object_or_404(Book, id=book_id)
+    bookmarked = Bookmark.objects.filter(user=request.user, book=book).exists()
 
     context = {
         "book": book,
+        "bookmarked": bookmarked
     }
     return render(request, "books/book_summary.html", context)
 
