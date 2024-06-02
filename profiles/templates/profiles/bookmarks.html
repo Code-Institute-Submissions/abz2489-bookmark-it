@@ -16,35 +16,11 @@
         </div>
         <hr class="mt-1 mb-3">
 
-    <!--SORT-->
-    <div class="sort-container container mt-4">
-        <div class="row align-items-end">
-            <div class="sort col-8">
-                <h5 class="ms-4 mb-1">Sort:</h5>
-                <select onchange="optionUrl(this)" class="form-select w-50 ms-4 mb-4" aria-label="Default select example">
-                    <option selected>Select</option>
-                    <option value="1" data-url="{% url 'books' %}?sort=title&direction=asc"
-                    {% if current_sorting == "title_asc" %}selected{% endif %}>Title</option>
-                    <option value="2" data-url="{% url 'books' %}?sort=author&direction=asc"
-                    {% if current_sorting == "author_asc" %}selected{% endif %}>Author</option>
-                    <option value="3" data-url="{% url 'books' %}?sort=price&direction=asc" 
-                    {% if current_sorting == "price_asc" %}selected{% endif %}>Price (Low to High)</option>
-                    <option value="4" data-url="{% url 'books' %}?sort=price&direction=desc"
-                    {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (High to Low)</option>
-                </select>
-            </div>
-            <div class="col-4">
-                <p class="text-end mb-4 me-4">{{ books|length }} Books{% if search_term %} found for "{{ search_term }}"{% endif %}</p>
-            </div>
-        </div>
-    </div>
-
     <!--BOOKS-->
     {% if user_bookmarks %}
     <div class="container-fluid">
         <div class="row">
-            <div class="book-container col-10 offset-1">
-                <div class="row mt-1 mb-2"></div>
+            <div class="book-container col-10 offset-1 mt-5 mb-2">
                 <div class="row">
                     {% for book in user_bookmarks %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
@@ -107,6 +83,13 @@
                 </div>
             </div>
         </div>
+    </div>
+    {% else %}
+    <div class="text-center">
+        <p class="lead mb-3">You don't have any bookmarked books</p>
+        <a href="{% url 'books' %}">
+            <span class="btn btn-primary"><i class="bi bi-book me-2"></i>Find Books</span>
+        </a>
     </div>
     {% endif %}
     
