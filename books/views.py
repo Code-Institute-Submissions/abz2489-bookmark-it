@@ -57,13 +57,15 @@ def all_books(request):
 
     current_sorting = f"{sort}_{direction}"
 
+    template = "books/all_books.html"
+
     context = {
         "books": books,
         "search_term": query,
         "current_categories": categories,
         "current_sorting": current_sorting
     }
-    return render(request, "books/books.html", context)
+    return render(request, template, context)
 
 
 def book_summary(request, book_id):
