@@ -49,15 +49,32 @@
                                 <div class="card-footer pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="book-price mb-0 text-left font-weight-bold">£{{ book.price }}</p>
-                                        </div>
+                                    </div>
                                         {% if request.user.is_superuser %}
                                             <div class="col d-flex justify-content-end">
-                                                <a href="{% url 'bookmark_remove' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="Remove bookmark">
-                                                    <i class="bi bi-trash edit-icon"></i>
-                                                </a>
+                                                <p class="me-1">Remove Bookmark</p>
+                                                <i class="bi bi-bookmark-dash-fill icon bookmark-icon pointer" data-bs-toggle="modal" data-bs-target="#removeModal{{book.id}}"></i>
                                             </div>
+
+                                            <!--Bookmark Remove Modal -->
+                                            <div class="modal fade" id="removeModal{{book.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="removeModal{{book.id}}" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5 alert alert-danger" id="staticBackdropLabel">Bookmark Remove Confirmation</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to remove bookmark from {{book.title}}?</p>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                                    <a href="{% url 'bookmark_remove' book.id %}" class="btn btn-primary">Yes</a>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            
                                         {% endif %}
                                     </div>
                                 </div>
