@@ -29,7 +29,7 @@ def user_profile(request):
     form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
-    template = 'profiles/profile.html'
+    template = 'profiles/user_profile.html'
     context = {
         'form': form,
         'profile': profile,
@@ -72,7 +72,7 @@ def bookmark_add(request, book_id):
 
 @login_required
 def bookmark(request):
-    """A view to display user's bookmarked books"""
+    """A view to display a  user's bookmarked books"""
     bookmarks = Bookmark.objects.filter(user=request.user)
     user_bookmarks = [bookmark.book for bookmark in bookmarks]
 
@@ -85,6 +85,7 @@ def bookmark(request):
 
 @login_required
 def bookmark_remove(request, book_id):
+    """A view to remove a book from a user's bookmarks"""
     book = get_object_or_404(Book, id=book_id)
     Bookmark.objects.filter(user=request.user, book=book).delete()
     
