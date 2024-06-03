@@ -10,7 +10,7 @@ from checkout.models import Order
 
 
 @login_required
-def profile(request):
+def user_profile(request):
     """ 
     A view to display a user's profile 
     """
