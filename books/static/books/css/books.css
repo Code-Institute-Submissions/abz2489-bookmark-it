@@ -6,6 +6,10 @@
     color: #198A98;
 }
 
+.bookmark-icon {
+    color: #CC0069;
+}
+
 .arrow-icon {
     font-size: 2rem;
     color: #CC0069;
@@ -65,7 +69,7 @@ div#div_id_cover
     margin-bottom: 2rem;
 }
 
-.remove-spinner::-webkit-outer-spin-button,
+/*.remove-spinner::-webkit-outer-spin-button,
 .remove-spinner::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
@@ -74,7 +78,7 @@ select.select {
     appearance: auto;
     -moz-appearance: auto;
     -webkit-appearance: auto;
-}
+}*/
 
 input::file-selector-button {
     margin-top: 0.5rem;
