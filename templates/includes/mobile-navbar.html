@@ -10,7 +10,7 @@
         <ul>
             {% if request.user.is_authenticated %}
             <li class="nav-item btn me-3">
-                <a class="nav-link-lg" href="{% url 'bookmark' %}" data-bs-toggle="tooltip" data-bs-placement="left"
+                <a class="nav-link-lg" href="{% url 'user_bookmark' %}" data-bs-toggle="tooltip" data-bs-placement="left"
                 data-bs-custom-class="custom-tooltip" data-bs-title="Your Bookmark">
                     <i class="bi bi-bookmark bookmark icon"></i>
                 </a>

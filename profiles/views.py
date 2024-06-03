@@ -71,12 +71,12 @@ def bookmark_add(request, book_id):
 
 
 @login_required
-def bookmark(request):
+def user_bookmark(request):
     """A view to display a  user's bookmarked books"""
     bookmarks = Bookmark.objects.filter(user=request.user)
     user_bookmarks = [bookmark.book for bookmark in bookmarks]
 
-    template = "profiles/bookmarks.html"
+    template = "profiles/user_bookmark.html"
     context = {
         "user_bookmarks": user_bookmarks
     }
@@ -90,4 +90,4 @@ def bookmark_remove(request, book_id):
     Bookmark.objects.filter(user=request.user, book=book).delete()
     
     messages.success(request, f"{book.title} removed from bookmarks")
-    return redirect("bookmark")
+    return redirect("user_bookmark")
