@@ -29,10 +29,27 @@
                     </div>
                     {% if request.user.is_superuser %}
                         <div class="col d-flex justify-content-center">
-                             <a href="{% url 'delete_book' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                            data-bs-custom-class="custom-tooltip" data-bs-title="Delete">
-                                <i class="bi bi-trash edit-icon me-5"></i>
-                            </a>
+                            <i class="bi bi-trash edit-icon pointer" data-bs-toggle="modal" data-bs-target="#deleteBook{{book.id}}"></i>
+
+                            <!--Delete Book Modal -->
+                            <div class="modal fader" id="deleteBook{{book.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="#deleteBook{{book.id}}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5 alert alert-danger" id="staticBackdropLabel">Delete Book Confirmation</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete {{book.title}} from Bookmark-It?</p>
+                                        </div>
+                                        <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                        <a href="{% url 'delete_book' book.id %}" class="btn btn-primary">Yes</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <a href="{% url 'edit_book' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
                             data-bs-custom-class="custom-tooltip" data-bs-title="Edit">
                                 <i class="bi bi-pencil edit-icon ms-4 me-5"></i>
