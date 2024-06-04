@@ -146,6 +146,11 @@ nav {
   color:#EEF7FB;
 }
 
+#search-btn:hover {
+  background-color: #01466c;
+  border: 1px solid #EEF7FB;
+}
+
 /*FOOTER*/
 .page-footer {
   background-color: #198A98;
