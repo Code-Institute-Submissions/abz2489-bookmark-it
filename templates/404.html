@@ -5,17 +5,19 @@
 {% block extra_title %} - 404 Error{% endblock %}
 
 {% block content %}
-    <div class="col text-center mt-3">
-        <h1>{% trans "ERROR 404" %}</h1>
+    <div class="page-content">
+        <div class="col text-center mt-3">
+            <h1>{% trans "ERROR 404" %}</h1>
+        </div>
+        <hr class="mt-1 mb-2">
+
+        <div class="container error-container">
+            <h3 class="mb-3">Oops!</h3>
+
+            <p class="mb-3">Page not found. Looks like this book has wandered off our shelves.
+                Let's help you find another captivating read.
+            </p>
+            <a href="{% url 'all_books' %}" class="btn btn-secondary text-dec-none text-light mb-2">Back to Books</a>
+        </div>
     </div>
-    <hr class="mt-1 mb-2">
-
-    <div class="container error-container">
-        <h3 class="mb-3">Oops!</h3>
-
-        <p class="mb-3">Page not found. Looks like this book has wandered off our shelves.
-            Let's help you find another captivating read.
-        </p>
-        <a href="{% url 'all_books' %}" class="btn btn-secondary text-dec-none text-light mb-2">Back to Books</a>
-    </div>  
 {% endblock %}

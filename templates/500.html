@@ -5,17 +5,19 @@
 {% block extra_title %} - 500 Error{% endblock %}
 
 {% block content %}
-    <div class="col text-center mt-3">
-        <h1>{% trans "ERROR 500" %}</h1>
-    </div>
-    <hr class="mt-1 mb-2">
+    <div class="page-content">
+        <div class="col text-center mt-3">
+            <h1>{% trans "ERROR 500" %}</h1>
+        </div>
+        <hr class="mt-1 mb-2">
 
-    <div class="container error-container">
-        <h3 class="mb-3">Unexpected plot twist!</h3>
+        <div class="container error-container">
+            <h3 class="mb-3">Unexpected plot twist!</h3>
 
-        <p class="mb-3"> Our servers are experiencing technical difficulties.
-            Please bear with us while we work to restore the story to its intended path.
-        </p>
-        <a href="{% url 'all_books' %}" class="btn btn-secondary text-dec-none text-light mb-2">Back to Books</a>
+            <p class="mb-3"> Our servers are experiencing technical difficulties.
+                Please bear with us while we work to restore the story to its intended path.
+            </p>
+            <a href="{% url 'all_books' %}" class="btn btn-secondary text-dec-none text-light mb-2">Back to Books</a>
+        </div>
     </div>
 {% endblock %}

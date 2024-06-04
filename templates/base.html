@@ -103,6 +103,32 @@
         {% block content %}
         {% endblock %}
 
+        {% block footer %}
+            <footer class="page-footer small text-center mt-4">
+                <div class="row container-fluid">
+                    <div class="col text-left text-white small py-3 ml-md-5 ml-3">
+                    Bookmark-It created by
+                        <a href="#" class="text-white" target="_blank"
+                            aria-label="#">
+                            Abbie Davies
+                        </a>
+                        for educational purposes
+                    </div>
+                    <div class="col text-right py-3 small">
+                        <a href="https://instagram.com" target="_blank" aria-label="instagram link icon">
+                            <i class="bi bi-instagram f-icon me-5"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" aria-label="facebook link icon">
+                            <i class="bi bi-facebook f-icon me-5"></i>
+                        </a>
+                        <a href="https://x.com" target="_blank" aria-label="x link icon">
+                            <i class="bi bi-twitter-x f-icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
+
         {% block postloadjs %}
         {{ block.super }}
             <script src="{% static 'js/base.js' %}"></script>

@@ -9,104 +9,106 @@
 {% endblock %}
 
 {% block content %}
-    <div class="overlay">
-        <div class="row">
-            <div class="col text-center mt-3">
-                <h1>Basket</h1>
+    <div class="page-content">
+        <div class="overlay">
+            <div class="row">
+                <div class="col text-center mt-3">
+                    <h1>Basket</h1>
+                </div>
             </div>
-        </div>
-        <hr class="mt-1 mb-3">
+            <hr class="mt-1 mb-3">
 
-        <!--BASKET-->
-        <div class="row">
-            <div class="col">
-                {% if basket_items %}
-                    <div class="table-responsive">
-                        <table class="table table-sm table-borderless">
-                            <thead>
-                                <tr>           
-                                    <th scope="col">Book</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Qty</th>
-                                    <th scope="col">Subtotal</th>
-                                </tr>
-                            </thead>
+            <!--BASKET-->
+            <div class="row">
+                <div class="col">
+                    {% if basket_items %}
+                        <div class="table-responsive">
+                            <table class="table table-sm table-borderless">
+                                <thead>
+                                    <tr>           
+                                        <th scope="col">Book</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Qty</th>
+                                        <th scope="col">Subtotal</th>
+                                    </tr>
+                                </thead>
 
-                            {% for item in basket_items %}
-                                <tr>
-                                    <td class="p-3 w-25">
-                                        {% if item.book.cover %}
-                                        <img class="cover-img-xsml hide-sm" src="{{ item.book.cover.url }}" alt="{{ item.book.name }}">
-                                        {% else %}
-                                        <img class="cover-img-xsml hide-sm" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.book.name }}">
-                                        {% endif %}
-                                        <p class="my-0"><strong>{{ item.book.title }}</strong></p>
-                                        <p class="my-0 small text-muted">ISBN: {{ item.book.isbn }}</p>
-                                    </td>
-                                    <td class="py-3 col">
-                                        <p class="my-0">£{{ item.book.price }}</p>
-                                    </td>
-                                    <td class="py-3 col">
-                                        <form class="form update-form" method="POST" action="{% url 'adjust_basket' item.book_id %}">
-                                            {% csrf_token %}
-                                            <div class="form-group">
-                                                <div class="input-group input-group-{{ item.Book }}">
-                                                    <div class="input-group-prepend">
-                                                        <button class="decrement-qty qty-btn btn btn-sm decrement-qty_{{ item.book_id }}"
-                                                            data-book_id="{{ item.book_id }}">
-                                                            <span>
-                                                                <i class="bi bi-dash"></i>
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                    <input class="form-control qty_input id_qty_{{ item.book_id }}" 
-                                                         type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                                            data-book_id="{{ item.book_id }}">
-                                                    <div class="input-group-append">
-                                                        <button class="increment-qty qty-btn btn btn-sm increment-qty_{{ item.book_id }}"
-                                                            data-book_id="{{ item.book_id }}">
-                                                            <span>
-                                                                <i class="bi bi-plus"></i>
-                                                            </span>
-                                                        </button>
+                                {% for item in basket_items %}
+                                    <tr>
+                                        <td class="p-3 w-25">
+                                            {% if item.book.cover %}
+                                            <img class="cover-img-xsml hide-sm" src="{{ item.book.cover.url }}" alt="{{ item.book.name }}">
+                                            {% else %}
+                                            <img class="cover-img-xsml hide-sm" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.book.name }}">
+                                            {% endif %}
+                                            <p class="my-0"><strong>{{ item.book.title }}</strong></p>
+                                            <p class="my-0 small text-muted">ISBN: {{ item.book.isbn }}</p>
+                                        </td>
+                                        <td class="py-3 col">
+                                            <p class="my-0">£{{ item.book.price }}</p>
+                                        </td>
+                                        <td class="py-3 col">
+                                            <form class="form update-form" method="POST" action="{% url 'adjust_basket' item.book_id %}">
+                                                {% csrf_token %}
+                                                <div class="form-group">
+                                                    <div class="input-group input-group-{{ item.Book }}">
+                                                        <div class="input-group-prepend">
+                                                            <button class="decrement-qty qty-btn btn btn-sm decrement-qty_{{ item.book_id }}"
+                                                                data-book_id="{{ item.book_id }}">
+                                                                <span>
+                                                                    <i class="bi bi-dash"></i>
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                        <input class="form-control qty_input id_qty_{{ item.book_id }}" 
+                                                            type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                                data-book_id="{{ item.book_id }}">
+                                                        <div class="input-group-append">
+                                                            <button class="increment-qty qty-btn btn btn-sm increment-qty_{{ item.book_id }}"
+                                                                data-book_id="{{ item.book_id }}">
+                                                                <span>
+                                                                    <i class="bi bi-plus"></i>
+                                                                </span>
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                        <a class="update-link text-info pointer me-3"><small>Update</small></a>
-                                        <a class="remove-item text-danger float-right" 
-                                            type="submit" id="remove_{{ item.book_id }}"><small>Remove</small></a>
-                                    </td>
-                                    <td class="py-3">
-                                        <p class="my-0">£{{ item.book.price | calc_subtotal:item.quantity }}</p>
+                                            </form>
+                                            <a class="update-link text-info pointer me-3"><small>Update</small></a>
+                                            <a class="remove-item text-danger float-right" 
+                                                type="submit" id="remove_{{ item.book_id }}"><small>Remove</small></a>
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0">£{{ item.book.price | calc_subtotal:item.quantity }}</p>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td colspan="4" class="pt-5">
+                                        <h6><strong>Basket Total: £{{ total_price|floatformat:2 }}</strong></h6>
+                                        <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+                                        <h4 class="mt-4"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h4>
                                     </td>
                                 </tr>
-                            {% endfor %}
-                            <tr>
-                                <td colspan="4" class="pt-5">
-                                    <h6><strong>Basket Total: £{{ total_price|floatformat:2 }}</strong></h6>
-                                    <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
-                                    <h4 class="mt-4"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="">
-                                    <a href="{% url 'all_books' %}" class="btn btn-md">
-                                        <span class="btn btn-secondary btn-md">Continue Shopping</span>
-                                    </a>
-                                    <a href="{% url 'checkout' %}" class="btn btn-md">
-                                        <span class="btn btn-primary btn-md">Secure Checkout</span>
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                {% else %}
-                    <p class="lead mb-5">Your basket is empty.</p>
-                    <a href="{% url 'all_books' %}" class="mb-2">
-                        <span class="btn btn-primary"><i class="bi bi-book"></i>Buy Books</span>
-                    </a>
-                {% endif %}
+                                <tr>
+                                    <td colspan="4" class="">
+                                        <a href="{% url 'all_books' %}" class="btn btn-md">
+                                            <span class="btn btn-secondary btn-md">Continue Shopping</span>
+                                        </a>
+                                        <a href="{% url 'checkout' %}" class="btn btn-md">
+                                            <span class="btn btn-primary btn-md">Secure Checkout</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="lead mb-5">Your basket is empty.</p>
+                        <a href="{% url 'all_books' %}" class="mb-2">
+                            <span class="btn btn-primary"><i class="bi bi-book"></i>Buy Books</span>
+                        </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

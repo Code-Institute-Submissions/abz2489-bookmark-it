@@ -7,147 +7,149 @@
 {% endblock %}
 
 {% block content %}
-    <div class="overlay">
-        <div class="row">
-            <div class="col text-center mt-3">
-                <h1>Checkout</h1>
+    <div class="page-content">
+        <div class="overlay">
+            <div class="row">
+                <div class="col text-center mt-3">
+                    <h1>Checkout</h1>
+                </div>
             </div>
-        </div>
-        <hr class="mt-1 mb-3">
+            <hr class="mt-1 mb-3">
 
-        <!--ORDER SUMMARY ACCORDION-->
-        <div class="accordion mx-auto" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        <span>
-                            <i class="bi bi-basket3-fill text-body pe-2"></i>
+            <!--ORDER SUMMARY ACCORDION-->
+            <div class="accordion mx-auto" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             <span>
-                                Order Summary
+                                <i class="bi bi-basket3-fill text-body pe-2"></i>
+                                <span>
+                                    Order Summary
+                                </span>
+                                <span>
+                                    £{{ total_price|floatformat:2 }}
+                                </span>
                             </span>
-                            <span>
-                                £{{ total_price|floatformat:2 }}
-                            </span>
-                        </span>
-                    </button>
-                </h2>
+                        </button>
+                    </h2>
 
-                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="charges-summary mb-5 px-0 mx-auto w-75">
-                            <div class="row">
-                                <div class="col-4">
-                                    <p class="mb-1 mt-0 small">Book</p>
-                                </div>
-                                <div class="col-3">
-                                    <p class="mb-1 mt-0 small">Qty</p>
-                                </div>
-                                <div class="col-5 col-md-3">
-                                    <p class="mb-1 mt-0 small">Subtotal</p>
-                                </div>
-                            </div>
-
-                            {% for book in basket_items %}
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="charges-summary mb-5 px-0 mx-auto w-75">
                                 <div class="row">
                                     <div class="col-4">
-                                        <p class="mb-1 mt-0 small">{{ book.book.title }}</p>
+                                        <p class="mb-1 mt-0 small">Book</p>
                                     </div>
                                     <div class="col-3">
-                                        <p class="mb-1 mt-0 small">{{ book.quantity }}</p>
+                                        <p class="mb-1 mt-0 small">Qty</p>
                                     </div>
                                     <div class="col-5 col-md-3">
-                                        <p class="mb-1 mt-0 small">£{{ book.book.price | calc_subtotal:book.quantity }}</p>
+                                        <p class="mb-1 mt-0 small">Subtotal</p>
                                     </div>
                                 </div>
-                            {% endfor %}
-                        </div>
-                        <hr class="my-0 w-100">
 
-                        <div class="row text-black mx-auto">
-                            <div class="col-8 col-md-4">
-                                <p class="my-0 w-100">Order Total:</p>
-                                <p class="my-0 w-100">Delivery:</p>
-                                <p class="my-0 w-100">Grand Total:</p>
+                                {% for book in basket_items %}
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p class="mb-1 mt-0 small">{{ book.book.title }}</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="mb-1 mt-0 small">{{ book.quantity }}</p>
+                                        </div>
+                                        <div class="col-5 col-md-3">
+                                            <p class="mb-1 mt-0 small">£{{ book.book.price | calc_subtotal:book.quantity }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
                             </div>
-                            <div class="col-4 col-md-2 ps-md-4">
-                                <p class="my-0">£{{ total_price | floatformat:2 }}</p>
-                                <p class="my-0">£{{ delivery | floatformat:2 }}</p>
-                                <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
+                            <hr class="my-0 w-100">
+
+                            <div class="row text-black mx-auto">
+                                <div class="col-8 col-md-4">
+                                    <p class="my-0 w-100">Order Total:</p>
+                                    <p class="my-0 w-100">Delivery:</p>
+                                    <p class="my-0 w-100">Grand Total:</p>
+                                </div>
+                                <div class="col-4 col-md-2 ps-md-4">
+                                    <p class="my-0">£{{ total_price | floatformat:2 }}</p>
+                                    <p class="my-0">£{{ delivery | floatformat:2 }}</p>
+                                    <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!--DELIVERY DETAILS FORM-->
-        <div class="col-12 col-lg-6 mx-auto">
-            <p class="pt-4 ps-3">Please fill out your details in the form below</p>
-            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
-                {% csrf_token %}
-                <fieldset class="rounded px-3 mb-4">
-                    <legend class="fieldset-label px-2 w-auto">Details</legend>
-                    {{ order_form.full_name | as_crispy_field }}
-                    {{ order_form.email | as_crispy_field }}
-                </fieldset>
+            <!--DELIVERY DETAILS FORM-->
+            <div class="col-12 col-lg-6 mx-auto">
+                <p class="pt-4 ps-3">Please fill out your details in the form below</p>
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
+                    <fieldset class="rounded px-3 mb-4">
+                        <legend class="fieldset-label px-2 w-auto">Details</legend>
+                        {{ order_form.full_name | as_crispy_field }}
+                        {{ order_form.email | as_crispy_field }}
+                    </fieldset>
 
-                <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label text-black px-2 w-auto">Delivery</legend>
-                    {{ order_form.phone_number | as_crispy_field }}
-                    {{ order_form.street_address1 | as_crispy_field }}
-                    {{ order_form.street_address2 | as_crispy_field }}
-                    {{ order_form.town_or_city | as_crispy_field }}
-                    {{ order_form.county | as_crispy_field }}
-                    {{ order_form.postcode | as_crispy_field }}
-                    {{ order_form.country | as_crispy_field }}
-                    <div class="form-check form-check-inline float-right mr-0">
-                        {% if user.is_authenticated %}
-                            <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
-                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
-                        {% else %}
-                            <label class="form-check-label" for="id-save-info">
-                                <a href="{% url 'account_signup' %}">Create an account</a> or 
-                                <a href="{% url 'account_login' %}">login</a> to save this information
-                            </label>
-                        {% endif %}
+                    <fieldset class="rounded px-3 mb-5">
+                        <legend class="fieldset-label text-black px-2 w-auto">Delivery</legend>
+                        {{ order_form.phone_number | as_crispy_field }}
+                        {{ order_form.street_address1 | as_crispy_field }}
+                        {{ order_form.street_address2 | as_crispy_field }}
+                        {{ order_form.town_or_city | as_crispy_field }}
+                        {{ order_form.county | as_crispy_field }}
+                        {{ order_form.postcode | as_crispy_field }}
+                        {{ order_form.country | as_crispy_field }}
+                        <div class="form-check form-check-inline float-right mr-0">
+                            {% if user.is_authenticated %}
+                                <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                                <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                            {% else %}
+                                <label class="form-check-label" for="id-save-info">
+                                    <a href="{% url 'account_signup' %}">Create an account</a> or 
+                                    <a href="{% url 'account_login' %}">login</a> to save this information
+                                </label>
+                            {% endif %}
+                        </div>
+                    </fieldset>
+
+                    <!--STRIPE PAYMENT-->
+                    <fieldset class="px-3">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+
+                        <!-- A Stripe card element will go here -->
+                        <div class="mb-3" id="card-element"></div>
+
+                        <!-- Used to display form errors -->
+                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+
+                        <!-- Client secret to pass to view for PID -->
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                    </fieldset>
+
+                    <div class="mt-5 mb-2 mx-4 ms-5">
+                        <a href="{% url 'basket' %}" class="btn btn-secondary mb-4" id="btn-adjust">
+                            <span class="font-weight-bold">Amend Order</span>
+                        </a>
+                        <button id="submit-button" class="btn btn-primary mb-4" id="btn-submit">
+                            <span class="font-weight-bold">Complete Order</span>
+                            <span class="icon">
+                                <i class=""></i>
+                            </span>
+                        </button>
                     </div>
-                </fieldset>
+                </form>
+            </div>
 
-                <!--STRIPE PAYMENT-->
-                <fieldset class="px-3">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-
-                    <!-- A Stripe card element will go here -->
-                    <div class="mb-3" id="card-element"></div>
-
-                    <!-- Used to display form errors -->
-                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-
-                    <!-- Client secret to pass to view for PID -->
-                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                </fieldset>
-
-                <div class="mt-5 mb-2 mx-4 ms-5">
-                    <a href="{% url 'basket' %}" class="btn btn-secondary mb-4" id="btn-adjust">
-                        <span class="font-weight-bold">Amend Order</span>
-                    </a>
-                    <button id="submit-button" class="btn btn-primary mb-4" id="btn-submit">
-                        <span class="font-weight-bold">Complete Order</span>
-                        <span class="icon">
-                            <i class=""></i>
-                        </span>
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <!--LOADING OVERLAY-->
-        <div id="loading-overlay">
-            <h1 class="text-light loading-spinner spin">
-                <span class="icon">
-                    <i class="bi bi-hourglass"></i>
-                </span>
-            </h1>
+            <!--LOADING OVERLAY-->
+            <div id="loading-overlay">
+                <h1 class="text-light loading-spinner spin">
+                    <span class="icon">
+                        <i class="bi bi-hourglass"></i>
+                    </span>
+                </h1>
+            </div>
         </div>
     </div>
 {% endblock %}

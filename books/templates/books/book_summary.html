@@ -6,128 +6,130 @@
 {% endblock %}
 
 {% block content %}
-    <div class="overlay">
-        <div class="row">
-            <div class="col text-center mt-3">
-                <h1>{{ book.title }} Summary</h1>
+    <div class="page-content">
+        <div class="overlay">
+            <div class="row">
+                <div class="col text-center mt-3">
+                    <h1>{{ book.title }} Summary</h1>
+                </div>
             </div>
-        </div>
-        <hr class="mt-1 mb-3">
+            <hr class="mt-1 mb-3">
 
-        <!--BOOK COVERS-->
-        <div class="container-fluid">
-            <div class="row d-flex align-items-center justify-content-center mb-4">
-                <div class="col-10 col-md-5 col-lg-4 mb-2">
-                    <div class="image-container mb-2">
-                        {% if book.cover %}
-                            <a href="{{ book.cover.url }}" target="_blank">
-                                <img class="cover-img-med img-fluid" src="{{ book.cover.url }}" alt="{{ book.title }}">
-                            </a>
-                            {% else %}
-                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ book.title }}">
-                        {% endif %}
-                    </div>
-                    {% if request.user.is_superuser %}
-                        <div class="col d-flex justify-content-center">
-                            <i class="bi bi-trash edit-icon pointer" data-bs-toggle="modal" data-bs-target="#deleteBook{{book.id}}"></i>
+            <!--BOOK COVERS-->
+            <div class="container-fluid">
+                <div class="row d-flex align-items-center justify-content-center mb-4">
+                    <div class="col-10 col-md-5 col-lg-4 mb-2">
+                        <div class="image-container mb-2">
+                            {% if book.cover %}
+                                <a href="{{ book.cover.url }}" target="_blank">
+                                    <img class="cover-img-med img-fluid" src="{{ book.cover.url }}" alt="{{ book.title }}">
+                                </a>
+                                {% else %}
+                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ book.title }}">
+                            {% endif %}
+                        </div>
+                        {% if request.user.is_superuser %}
+                            <div class="col d-flex justify-content-center">
+                                <i class="bi bi-trash edit-icon pointer" data-bs-toggle="modal" data-bs-target="#deleteBook{{book.id}}"></i>
 
-                            <!--Delete Book Modal -->
-                            <div class="modal fader" id="deleteBook{{book.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="#deleteBook{{book.id}}" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5 alert alert-danger" id="staticBackdropLabel">Delete Book Confirmation</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Are you sure you want to delete {{book.title}} from Bookmark-It?</p>
-                                        </div>
-                                        <div class="modal-footer justify-content-center">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                        <a href="{% url 'delete_book' book.id %}" class="btn btn-primary">Yes</a>
+                                <!--Delete Book Modal -->
+                                <div class="modal fader" id="deleteBook{{book.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="#deleteBook{{book.id}}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5 alert alert-danger" id="staticBackdropLabel">Delete Book Confirmation</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete {{book.title}} from Bookmark-It?</p>
+                                            </div>
+                                            <div class="modal-footer justify-content-center">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                            <a href="{% url 'delete_book' book.id %}" class="btn btn-primary">Yes</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <a href="{% url 'edit_book' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                            data-bs-custom-class="custom-tooltip" data-bs-title="Edit">
-                                <i class="bi bi-pencil edit-icon ms-4 me-5"></i>
-                            </a>
-                        </div>
-                    {% endif %}
-                </div>
-                
-                <!--BOOK MAIN INFO-->
-                <div class="col-12 col-md-7 col-lg-5">
-                    <div class="card-body pb-0">
-                        <p class="category-badge mb-0 badge rounded-pill">{{ book.category.friendly_name}}</p>
-                    </div>
-                    <p class="book-title mb-0">{{ book.title }}</p>
-                    <p class="book-author mb-2">{{ book.author }}</p>
-                    {% if book.series %}
-                        <p class="mb-0">Book <strong>{{book.number_in_series}}</strong> of <strong>{{ book.series }}</strong> series</p>
-                    {% endif %}
-                    <p class="book-price mb-3 text-left">£{{ book.price }}</p>
-                    {% if request.user.is_authenticated %}
-                        {% if bookmarked %}
-                        <i class="bi bi-bookmark-fill icon bookmark-icon" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                            data-bs-custom-class="custom-tooltip" data-bs-title="Bookmarked">
-                        </i>
-                        <span>Bookmarked</span>
-                        {% else %}
-                            <a href="{% url 'bookmark_add' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                data-bs-custom-class="custom-tooltip" data-bs-title="Add bookmark">
-                                <i class="bi bi-bookmark-plus icon bookmark-icon"></i>
-                            </a>
+                                <a href="{% url 'edit_book' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="custom-tooltip" data-bs-title="Edit">
+                                    <i class="bi bi-pencil edit-icon ms-4 me-5"></i>
+                                </a>
+                            </div>
                         {% endif %}
-                    {% endif %}
+                    </div>
+                    
+                    <!--BOOK MAIN INFO-->
+                    <div class="col-12 col-md-7 col-lg-5">
+                        <div class="card-body pb-0">
+                            <p class="category-badge mb-0 badge rounded-pill">{{ book.category.friendly_name}}</p>
+                        </div>
+                        <p class="book-title mb-0">{{ book.title }}</p>
+                        <p class="book-author mb-2">{{ book.author }}</p>
+                        {% if book.series %}
+                            <p class="mb-0">Book <strong>{{book.number_in_series}}</strong> of <strong>{{ book.series }}</strong> series</p>
+                        {% endif %}
+                        <p class="book-price mb-3 text-left">£{{ book.price }}</p>
+                        {% if request.user.is_authenticated %}
+                            {% if bookmarked %}
+                            <i class="bi bi-bookmark-fill icon bookmark-icon" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="custom-tooltip" data-bs-title="Bookmarked">
+                            </i>
+                            <span>Bookmarked</span>
+                            {% else %}
+                                <a href="{% url 'bookmark_add' book.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                    data-bs-custom-class="custom-tooltip" data-bs-title="Add bookmark">
+                                    <i class="bi bi-bookmark-plus icon bookmark-icon"></i>
+                                </a>
+                            {% endif %}
+                        {% endif %}
 
-                    <!--QUANTITY FORM-->
-                    <form class="form" method="POST" action="{% url 'add_to_basket' book.id %}">
-                        {% csrf_token %}
-                        <p><strong>Quantity:</strong></p>
-                        <div class="form-group">
-                            <div class="input-group input-group-{{ book.id }} w-50">
-                                <div class="input-group-prepend">
-                                    <button class="decrement-qty decrement-qty_{{ book.id }} btn" 
-                                        data-book_id="{{ book.id }}">
-                                        <span class="icon">
-                                            <i class="bi bi-dash"></i>
-                                        </span>
-                                    </button>
-                                </div>
-                                <input class="form-control mb-2 qty_input id_qty_{{ book.id }} w-25" type="number" name="quantity" value="1" min="1" max="99" data-book_id="{{ book.id }}">
-                                <div class="input-group-append">
-                                    <button class="increment-qty btn increment-qty_{{ book.id }}"
-                                        data-book_id="{{ book.id }}">
-                                        <span class="icon">
-                                            <i class="bi bi-plus"></i>
-                                        </span>
-                                    </button>
+                        <!--QUANTITY FORM-->
+                        <form class="form" method="POST" action="{% url 'add_to_basket' book.id %}">
+                            {% csrf_token %}
+                            <p><strong>Quantity:</strong></p>
+                            <div class="form-group">
+                                <div class="input-group input-group-{{ book.id }} w-50">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty decrement-qty_{{ book.id }} btn" 
+                                            data-book_id="{{ book.id }}">
+                                            <span class="icon">
+                                                <i class="bi bi-dash"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control mb-2 qty_input id_qty_{{ book.id }} w-25" type="number" name="quantity" value="1" min="1" max="99" data-book_id="{{ book.id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn increment-qty_{{ book.id }}"
+                                            data-book_id="{{ book.id }}">
+                                            <span class="icon">
+                                                <i class="bi bi-plus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <input type="submit" class="btn btn-primary mt-2 mb-3" value="Buy">
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                    </form>
+                            <input type="submit" class="btn btn-primary mt-2 mb-3" value="Buy">
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        </form>
 
-                    <!--BOOK INFO CONTINUED-->
-                    <p class="book-isbn mb-1 text-left"><strong>ISBN:</strong> {{ book.isbn }}</p>
-                    {% if book.pages %}
-                    <p class="mb-1 text-left"><strong>Pages:</strong> {{ book.pages }}</p>
-                    {% endif %}
-                    {% if book.date_published %}
-                    <p class="mb-1 text-left"><strong>Published:</strong> {{ book.date_published }}</p>
-                    {% endif %}
+                        <!--BOOK INFO CONTINUED-->
+                        <p class="book-isbn mb-1 text-left"><strong>ISBN:</strong> {{ book.isbn }}</p>
+                        {% if book.pages %}
+                        <p class="mb-1 text-left"><strong>Pages:</strong> {{ book.pages }}</p>
+                        {% endif %}
+                        {% if book.date_published %}
+                        <p class="mb-1 text-left"><strong>Published:</strong> {{ book.date_published }}</p>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
 
-            <!--BOOK SUMMARY-->
-            <div class="row d-flex justify-content-center">
-                <div class="col-12 col-md-9">
-                    <p class="mb-0"><strong>Summary:</strong></p>
-                    <p class="book-summary t-3">{{ book.summary }}</p>
+                <!--BOOK SUMMARY-->
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-md-9">
+                        <p class="mb-0"><strong>Summary:</strong></p>
+                        <p class="book-summary t-3">{{ book.summary }}</p>
+                    </div>
                 </div>
             </div>
         </div>

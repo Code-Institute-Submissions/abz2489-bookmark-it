@@ -5,17 +5,19 @@
 {% block extra_title %} - 403 Error{% endblock %}
 
 {% block content %}
-    <div class="col text-center mt-3">
-        <h1>{% trans "ERROR 403" %}</h1>
-    </div>
-    <hr class="mt-1 mb-2">
+    <div class="page-content">
+        <div class="col text-center mt-3">
+            <h1>{% trans "ERROR 403" %}</h1>
+        </div>
+        <hr class="mt-1 mb-2">
 
-    <div class="container error-container">
-        <h3 class="mb-3">Access Denied! It seems you've stumbled into the forbidden section of our library.</h3>
+        <div class="container error-container">
+            <h3 class="mb-3">Access Denied! It seems you've stumbled into the forbidden section of our library.</h3>
 
-        <p class="mb-3">Fear not, dear reader! While this door may be closed,
-            there are countless other literary worlds waiting to be explored.
-        </p>
-        <a href="{% url 'all_books' %}" class="btn btn-secondary text-dec-none text-light mb-2">Back to Books</a>
+            <p class="mb-3">Fear not, dear reader! While this door may be closed,
+                there are countless other literary worlds waiting to be explored.
+            </p>
+            <a href="{% url 'all_books' %}" class="btn btn-secondary text-dec-none text-light mb-2">Back to Books</a>
+        </div>
     </div>
 {% endblock %}

@@ -52,11 +52,14 @@ hr {
   margin: auto;
   background-color: #cc0069;
   opacity: 80%;
-
 }
 
 a {
   text-decoration: none;
+}
+
+.page-content {
+  min-height: calc(100vh - 119px);
 }
 
 .overlay {
@@ -141,6 +144,19 @@ nav {
 
 .nav-icon {
   color:#EEF7FB;
+}
+
+/*FOOTER*/
+.page-footer {
+  background-color: #198A98;
+}
+
+.f-icon {
+  color: #EEF7FB;
+}
+
+.f-icon:hover {
+  color: #CC0069;
 }
 
 /*ALLAUTH*/
