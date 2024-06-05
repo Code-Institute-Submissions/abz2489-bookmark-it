@@ -50,7 +50,7 @@ def all_books(request):
             print(f"Query: {query}")
             if not query:
                 messages.error(request, "No search criteria entered!")
-                return redirect(reverse("books"))
+                return redirect(reverse("all_books"))
             
             queries = Q(title__icontains=query) | Q(author__icontains=query) | Q(summary__icontains=query) | Q(category__name__icontains=query)
             books = books.filter(queries)
@@ -72,7 +72,10 @@ def book_summary(request, book_id):
     """This view displays an individual summary of a selected book"""
 
     book = get_object_or_404(Book, id=book_id)
-    bookmarked = Bookmark.objects.filter(user=request.user, book=book).exists()
+    bookmarked = False
+    
+    if request.user.is_authenticated:
+        bookmarked = Bookmark.objects.filter(user=request.user, book=book).exists()
 
     context = {
         "book": book,
@@ -86,7 +89,7 @@ def add_book(request):
     """Add a new book to the book shop"""
     if not request.user.is_superuser:
         messages.error(request, "Only store owners can access this page")
-        return redirect(reverse("books"))
+        return redirect(reverse("all_books"))
 
     if request.method == "POST":
         form = BookForm(request.POST, request.FILES)
@@ -111,7 +114,7 @@ def edit_book(request, book_id):
     """Edit and existing book"""
     if not request.user.is_superuser:
         messages.error(request, "Only store owners can access this page")
-        return redirect(reverse("books"))
+        return redirect(reverse("all_books"))
 
     book = get_object_or_404(Book, pk=book_id)
     if request.method == "POST":
@@ -140,9 +143,9 @@ def delete_book(request, book_id):
     """Delete a book from the store"""
     if not request.user.is_superuser:
         messages.error(request, "Only store owners can delete books")
-        return redirect(reverse("books"))
+        return redirect(reverse("all_books"))
 
     book = get_object_or_404(Book, pk=book_id)
     book.delete()
     messages.success(request, f"{book.title} successfully deleted")
-    return redirect(reverse("books"))
+    return redirect(reverse("all_books"))
