@@ -283,6 +283,7 @@ Since completing the wireframes I decided not to add a footer to the website as 
 
 
 # Testing
+Testing can be found at [TESTING.md](TESTING.md).
 
 # Deployment
 Heroku was used to deploy this project. Follow the steps below to deploy.
@@ -574,13 +575,10 @@ Click **Create Group**
 
 13. Scroll down to **Permissions** click on it and select "Grant public-read access" and accept the warning. Click **Upload**
 
-
-# Future Features
-
-# Known Bugs
-- Confirmation emails for purchases not sending but account verification and password reset emails are.
-
+# Unfixed Bugs
 - After hitting major setbacks with emails and deployment sadly this is currently in an unfinished state.
+- The title field on the add book form doesn't seem to flash up with "please fill in this field" despite having the correct validation set.
+- Footer styling was working perfectly in development but not in the deployed site.
 
 # Citation
 
