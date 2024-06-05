@@ -33,6 +33,6 @@ class BookForm(forms.ModelForm):
     def clean_date_published(self):
         """Ensures only past dates are selected in the date picker"""
         date_published = self.cleaned_data.get("date_published")
-        if date_published >= datetime.date.today():
+        if date_published > datetime.date.today():
             raise forms.ValidationError("The publication date must be in the past!")
         return date_published
