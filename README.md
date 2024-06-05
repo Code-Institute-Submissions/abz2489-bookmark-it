@@ -249,11 +249,38 @@ Since completing the wireframes I decided not to add a footer to the website as 
 # Technologies Used
 
 ## Languages
+- HTML
+- CSS
+- JavaScript
+- Python
+
 ## Frameworks
+- Django
+- Bootstrap 5
+
 ## Database
+- Elephant SQL for deployment
+- sqlite3 for development
+
 ## Libraries & Packages
+- Django Allauth
+- Django Crispy Forms
+- Django Countries
+- Dj Database URL
+- Pillow
+- Gunicorn
+- Psycopg2
+
 ## Payment System
+- Stripe
+
 ## Programs
+- Balsamiq wireframes
+- DBdiagram.io
+- Git
+- Github
+- Chrome Devtools
+
 
 # Testing
 
