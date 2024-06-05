@@ -81,6 +81,10 @@ ul {
   list-style-type: none;
 }
 
+.decrement-qty,.increment-qty {
+  height: 39px;
+}
+
 .btn-primary {
   background-color: #CC0069;
   border: none;
@@ -91,6 +95,9 @@ ul {
   --bs-btn-active-color: #cc0069;
   --bs-btn-active-bg: #198A98;
   --bs-btn-active-shadow: none;
+  --bs-btn-disabled-color: #EEF7FB;
+  --bs-btn-disabled-bg: #6C757D;
+  --bs-btn-disabled-border-color: #6C757D;
 }
 
 .btn-outline-light {
@@ -100,7 +107,6 @@ ul {
   --bs-btn-active-color: #EEF7FB;
   --bs-btn-active-bg: #01466c;
   --bs-btn-active-shadow: none;
-
 }
 
 /*NAVBAR*/

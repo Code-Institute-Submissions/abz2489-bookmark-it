@@ -53,7 +53,7 @@
                                                 <div class="form-group">
                                                     <div class="input-group input-group-{{ item.Book }}">
                                                         <div class="input-group-prepend">
-                                                            <button class="decrement-qty qty-btn btn btn-sm decrement-qty_{{ item.book_id }}"
+                                                            <button class="decrement-qty btn btn-primary btn-sm ms-1 decrement-qty_{{ item.book_id }}"
                                                                 data-book_id="{{ item.book_id }}">
                                                                 <span>
                                                                     <i class="bi bi-dash"></i>
@@ -64,7 +64,7 @@
                                                             type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99"
                                                                 data-book_id="{{ item.book_id }}">
                                                         <div class="input-group-append">
-                                                            <button class="increment-qty qty-btn btn btn-sm increment-qty_{{ item.book_id }}"
+                                                            <button class="increment-qty btn btn-primary btn-sm ms-1 increment-qty_{{ item.book_id }}"
                                                                 data-book_id="{{ item.book_id }}">
                                                                 <span>
                                                                     <i class="bi bi-plus"></i>
