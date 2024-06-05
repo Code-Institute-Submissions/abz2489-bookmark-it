@@ -87,8 +87,6 @@ Due to the size of the project and time constraints I have decided to leave **Re
 | 29  | account holder                   | view reviews written by other users                          | make decisions on my own purchases                                                    | Future Feature   |
 
 ### Database
-First draft:
-
 ![Bookmark-It Relational Database](documentation/features/bmi-db1.png)
 
 Second draft:
@@ -107,7 +105,7 @@ Third draft:
 
 ![Bookmark-It Relational Database](documentation/features/bmi-db3.png)
 
-Due to time constraints I had to remove the book reviews. There are some additional fields added to books which I felt were necessary for the book summary page. 
+
 
 ## Skeleton
 ### Wireframes
