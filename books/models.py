@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 
 class Category(models.Model):
@@ -25,7 +26,7 @@ class Book(models.Model):
     pages = models.IntegerField(null=True, blank=True)
     series = models.CharField(max_length=254, null=True, blank=True)
     number_in_series = models.IntegerField(null=True, blank=True)
-    date_published = models.DateField()
+    date_published = models.DateField(default=datetime.now())
     cover = models.ImageField(null=True, blank=True)
 
     def __str__(self):
